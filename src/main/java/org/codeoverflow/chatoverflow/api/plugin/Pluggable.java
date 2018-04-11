@@ -1,7 +1,9 @@
 package org.codeoverflow.chatoverflow.api.plugin;
 
 /**
- * Pluggable is the entry point for chat overflow plugins. Should never be changed!
+ * Pluggable is the entry point for chat overflow plugins. Should NEVER be changed!
+ * DO NOT UPDATE, REMOVE OR ADD ANYTHING TO THIS INTERFACE WITHOUT KNOWING WHAT YOU DOING!
+ * This interface is only there to provide some information about your plugin (most important: the api version).
  */
 public interface Pluggable {
 
@@ -42,15 +44,12 @@ public interface Pluggable {
 
     /**
      * Returns the real chat overflow plugin. Should only be used after testing the api version number!
-     *
-     * @return the plugin implementation of the plugin project
-     */
-    Plugin getPlugin();
-
-    /**
-     * Sets the plugin manager for communication. Should only be used after testing the api version number!
+     * If the plugin is not up-to-date, it might not be loaded due to possible reflection errors. Please
+     * do only use the Plugin class to define your own chat overflow plugin logic!
      *
      * @param manager the manager implementation of the framework
+     * @return the plugin implementation of the plugin project, ready to get started!
      */
-    void setPluginManager(PluginManager manager);
+    Plugin getPlugin(PluginManager manager);
+
 }

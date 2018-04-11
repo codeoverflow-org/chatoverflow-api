@@ -8,4 +8,7 @@ public interface Plugin {
     // TODO: Proper interface
     void start();
 
+    // TODO: Dependencies of a plugin (and the full hierachy) might change. Implemented in the plugin, not the pluggable.
+    String[] getDependenciesOrWhatEver();
+
 }
