@@ -20,8 +20,8 @@ sourceGenerator := {
     """package org.codeoverflow.chatoverflow.api;
       |
       |/**
-      |* THIS CLASS IS GENERATED WHILE COMPILING. DO CHANGE THE VERSION NUMBERS IN THE APIS BUILD.SBT!
-      |*/
+      | * THIS CLASS IS GENERATED WHILE COMPILING. DO CHANGE THE VERSION NUMBERS IN THE APIS BUILD.SBT!
+      | */
       |public class APIVersion {
       |    public static final int MAJOR_VERSION = %d;
       |    public static final int MINOR_VERSION = %d;

@@ -45,7 +45,8 @@ public interface Pluggable {
     /**
      * Returns the real chat overflow plugin. Should only be used after testing the api version number!
      * If the plugin is not up-to-date, it might not be loaded due to possible reflection errors. Please
-     * do only use the Plugin class to define your own chat overflow plugin logic!
+     * do ONLY use the Plugin class to define your own chat overflow plugin logic!
+     * ONLY create a single instance here!
      *
      * @param manager the manager implementation of the framework
      * @return the plugin implementation of the plugin project, ready to get started!
