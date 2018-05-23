@@ -13,4 +13,6 @@ public interface ChatInput extends Input {
     void registerMessageHandler(Consumer<ChatMessage> handler);
 
     void registerPrivateMessageHandler(Consumer<ChatMessage> handler);
+
+    void init();
 }
