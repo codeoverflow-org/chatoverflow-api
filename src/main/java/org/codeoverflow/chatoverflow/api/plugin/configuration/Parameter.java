@@ -8,8 +8,8 @@ public class Parameter {
         this.requirements = requirements;
     }
 
-    public Requirement<String> requireString(String uniqueRequirementId, String name, boolean isOptional) {
-        return requirements.addAndReturn(uniqueRequirementId, name, isOptional, String.class);
+    public Requirement<String> string(String uniqueRequirementId, String name, boolean isOptional) {
+        return requirements.getOraddAndReturn(uniqueRequirementId, name, isOptional, String.class);
     }
 
     // Add more parameters here

@@ -11,16 +11,25 @@ public class Requirements {
 
     private Map<String, Requirement<?>> requirements = new HashMap<>();
 
-    <T> Requirement<T> addAndReturn
+    <T> Requirement<T> getOraddAndReturn
             (String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
 
-        Requirement<T> requirement = new Requirement<>(name, targetType, isOptional);
-        this.requirements.put(uniqueRequirementId, requirement);
-        return requirement;
+        if (requirements.containsKey(uniqueRequirementId)) {
+            return (Requirement<T>) requirements.get(uniqueRequirementId);
+        } else {
+            Requirement<T> requirement = new Requirement<>(name, targetType, isOptional);
+            this.requirements.remove(uniqueRequirementId);
+            this.requirements.put(uniqueRequirementId, requirement);
+            return requirement;
+        }
     }
 
     public Boolean allNeededRequirementsSet() {
         return requirements.values().stream().allMatch(req -> req.isSet() || req.isOptional());
+    }
+
+    public Map<String, Requirement<?>> getAllRequirements() {
+        return requirements;
     }
 
 }

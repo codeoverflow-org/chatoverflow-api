@@ -10,8 +10,8 @@ public class Output {
         this.requirements = requirements;
     }
 
-    public Requirement<TwitchChatOutput> requireTwitchChatOutput(String uniqueRequirementId, String name, boolean isOptional) {
-        return requirements.addAndReturn(uniqueRequirementId, name, isOptional, TwitchChatOutput.class);
+    public Requirement<TwitchChatOutput> twitchChat(String uniqueRequirementId, String name, boolean isOptional) {
+        return requirements.getOraddAndReturn(uniqueRequirementId, name, isOptional, TwitchChatOutput.class);
     }
 
     // Add more outputs here

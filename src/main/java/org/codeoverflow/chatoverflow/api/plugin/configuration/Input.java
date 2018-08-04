@@ -10,8 +10,8 @@ public class Input {
         this.requirements = requirements;
     }
 
-    public Requirement<TwitchChatInput> requireTwitchChatInput(String uniqueRequirementId, String name, boolean isOptional) {
-        return requirements.addAndReturn(uniqueRequirementId, name, isOptional, TwitchChatInput.class);
+    public Requirement<TwitchChatInput> twitchChat(String uniqueRequirementId, String name, boolean isOptional) {
+        return requirements.getOraddAndReturn(uniqueRequirementId, name, isOptional, TwitchChatInput.class);
     }
 
     // Add more inputs here
