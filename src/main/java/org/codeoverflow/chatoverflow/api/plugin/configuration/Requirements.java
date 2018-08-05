@@ -15,10 +15,15 @@ public class Requirements {
             (String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
 
         if (requirements.containsKey(uniqueRequirementId)) {
-            return (Requirement<T>) requirements.get(uniqueRequirementId);
+            try {
+                //noinspection unchecked
+                return (Requirement<T>) requirements.get(uniqueRequirementId);
+            } catch (Exception e) {
+                System.out.println("API Error. Unable to cast Requirement. " + e.toString());
+                return null;
+            }
         } else {
             Requirement<T> requirement = new Requirement<>(name, targetType, isOptional);
-            this.requirements.remove(uniqueRequirementId);
             this.requirements.put(uniqueRequirementId, requirement);
             return requirement;
         }
