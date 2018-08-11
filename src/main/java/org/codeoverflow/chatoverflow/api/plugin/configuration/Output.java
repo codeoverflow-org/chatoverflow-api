@@ -10,6 +10,9 @@ public class Output {
         this.requirements = requirements;
     }
 
+    /**
+     * Requires a twitch chat login that has to be created by the user.
+     */
     public Requirement<TwitchChatOutput> twitchChat(String uniqueRequirementId, String name, boolean isOptional) {
         return requirements.getOraddAndReturn(uniqueRequirementId, name, isOptional, TwitchChatOutput.class);
     }

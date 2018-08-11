@@ -3,10 +3,25 @@ package org.codeoverflow.chatoverflow.api.plugin.configuration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A requirements object is used to hold all needed parameters and connections of a plugin.
+ * The specific values can be required in the input, output and parameter objects.
+ */
 public class Requirements {
 
+    /**
+     * Require a new input parameter.
+     */
     public final Input input = new Input(this);
+
+    /**
+     * Require a new output parameter.
+     */
     public final Output output = new Output(this);
+
+    /**
+     * Require a new parameter.
+     */
     public final Parameter parameter = new Parameter(this);
 
     private Map<String, Requirement<?>> requirements = new HashMap<>();
@@ -29,10 +44,20 @@ public class Requirements {
         }
     }
 
+    /**
+     * Tests, if all non-optional requirements had been set (e.g. by the framework)
+     *
+     * @return true, if all needed requirements had been set
+     */
     public Boolean allNeededRequirementsSet() {
         return requirements.values().stream().allMatch(req -> req.isSet() || req.isOptional());
     }
 
+    /**
+     * Returns all requirements.
+     *
+     * @return A map with unique requirement ids and their requirements.
+     */
     public Map<String, Requirement<?>> getAllRequirements() {
         return requirements;
     }

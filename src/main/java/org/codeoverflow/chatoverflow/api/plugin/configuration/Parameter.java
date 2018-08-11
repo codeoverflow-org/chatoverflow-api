@@ -8,6 +8,9 @@ public class Parameter {
         this.requirements = requirements;
     }
 
+    /**
+     * Requires a new string that has to be specified by the user.
+     */
     public Requirement<String> string(String uniqueRequirementId, String name, boolean isOptional) {
         return requirements.getOraddAndReturn(uniqueRequirementId, name, isOptional, String.class);
     }
