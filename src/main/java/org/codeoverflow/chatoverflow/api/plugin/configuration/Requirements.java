@@ -1,6 +1,8 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,6 +53,23 @@ public class Requirements {
      */
     public Boolean allNeededRequirementsSet() {
         return requirements.values().stream().allMatch(req -> req.isSet() || req.isOptional());
+    }
+
+    /**
+     * Returns a list of all optional and non-optional requirements which are not set.
+     *
+     * @return a list of unique requirement ids
+     */
+    public List<String> getMissingRequirementIds() {
+        ArrayList<String> missingIds = new ArrayList<>();
+
+        requirements.forEach((key, value) -> {
+            if (!value.isSet()) {
+                missingIds.add(key);
+            }
+        });
+
+        return missingIds;
     }
 
     /**
