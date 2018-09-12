@@ -5,14 +5,14 @@ import org.codeoverflow.chatoverflow.api.io.input.Input;
 import java.util.List;
 import java.util.function.Consumer;
 
-public interface ChatInput extends Input {
-    List<ChatMessage> getLastMessages(long lastMilliseconds);
+public interface ChatInput<T extends ChatMessage> extends Input {
+    List<T> getLastMessages(long lastMilliseconds);
 
-    List<ChatMessage> getLastPrivateMessages(long lastMilliseconds);
+    List<T> getLastPrivateMessages(long lastMilliseconds);
 
-    void registerMessageHandler(Consumer<ChatMessage> handler);
+    void registerMessageHandler(Consumer<T> handler);
 
-    void registerPrivateMessageHandler(Consumer<ChatMessage> handler);
+    void registerPrivateMessageHandler(Consumer<T> handler);
 
     void init();
 }
