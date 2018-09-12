@@ -7,10 +7,14 @@ import org.codeoverflow.chatoverflow.api.plugin.configuration.Requirements;
  */
 public interface Plugin {
 
-    // TODO: Proper interface
-    void start();
+    void setup();
+
+    void loop();
+
+    void shutdown();
+
+    int getLoopInterval();
 
     Requirements getRequirements();
-
 
 }

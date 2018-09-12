@@ -28,8 +28,20 @@ public class Requirements {
 
     private Map<String, Requirement<?>> requirements = new HashMap<>();
 
-    <T> Requirement<T> getOraddAndReturn
-            (String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+    /**
+     * This method is used by the plugin and the framework.
+     * First, the plugin creates the requirement by requiring it.
+     * Then, the framework reads the empty requirement and sets its value.
+     *
+     * @param uniqueRequirementId the plugin unique requirement id
+     * @param name                the display name of the config option to show to the user
+     * @param isOptional          true, if an requirement has no to be filled
+     * @param targetType          the target type of the requirement content. Has to be the same like <T>
+     * @param <T>                 the target type of the requirement content. Has to be the same like targetType
+     * @return An empty requirement container OR the already created requirement
+     */
+    <T> Requirement<T> getOrAddAndReturn
+    (String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
 
         if (requirements.containsKey(uniqueRequirementId)) {
             try {

@@ -28,7 +28,7 @@ public class Requirement<T> {
      *
      * @return The typed requirement content
      */
-    public T getValue() {
+    public T get() {
         return value;
     }
 
@@ -37,7 +37,7 @@ public class Requirement<T> {
      *
      * @param value the value of the requirement
      */
-    public void setValue(T value) {
+    public void set(T value) {
         this.value = value;
     }
 
