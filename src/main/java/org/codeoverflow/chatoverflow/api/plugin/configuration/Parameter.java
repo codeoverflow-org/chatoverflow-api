@@ -12,7 +12,7 @@ public class Parameter {
      * Requires a new string that has to be specified by the user.
      */
     public Requirement<String> string(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.getOrAddAndReturn(uniqueRequirementId, displayName, isOptional, String.class);
+        return requirements.requireParameter(uniqueRequirementId, displayName, isOptional, String.class);
     }
 
     // Add more parameters here

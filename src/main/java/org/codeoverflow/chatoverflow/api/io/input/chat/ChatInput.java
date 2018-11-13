@@ -13,6 +13,4 @@ public interface ChatInput<T extends ChatMessage> extends Input {
     void registerMessageHandler(Consumer<T> handler);
 
     void registerPrivateMessageHandler(Consumer<T> handler);
-
-    void init();
 }

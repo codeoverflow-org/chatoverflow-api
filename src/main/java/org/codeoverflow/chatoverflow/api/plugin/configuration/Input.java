@@ -14,7 +14,7 @@ public class Input {
      * Requires a twitch chat login that has to be created by the user.
      */
     public Requirement<TwitchChatInput> twitchChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.getOrAddAndReturn(uniqueRequirementId, displayName, isOptional, TwitchChatInput.class);
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TwitchChatInput.class);
     }
 
     // Add more inputs here

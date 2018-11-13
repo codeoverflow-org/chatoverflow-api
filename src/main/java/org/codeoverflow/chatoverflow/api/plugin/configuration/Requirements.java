@@ -1,9 +1,8 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * A requirements object is used to hold all needed parameters and connections of a plugin.
@@ -26,36 +25,48 @@ public class Requirements {
      */
     public final Parameter parameter = new Parameter(this);
 
-    private Map<String, Requirement<?>> requirements = new HashMap<>();
+    private Map<String, Requirement<?>> inputRequirements = new HashMap<>();
+    private Map<String, Requirement<?>> outputRequirements = new HashMap<>();
+    private Map<String, Requirement<?>> parameterRequirements = new HashMap<>();
+
+    <T> Requirement<T> requireInput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+        return addRequirement(inputRequirements, uniqueRequirementId, name, isOptional, targetType);
+    }
+
+    <T> Requirement<T> requireOutput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+        return addRequirement(outputRequirements, uniqueRequirementId, name, isOptional, targetType);
+    }
+
+    <T> Requirement<T> requireParameter(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+        return addRequirement(parameterRequirements, uniqueRequirementId, name, isOptional, targetType);
+    }
 
     /**
-     * This method is used by the plugin and the framework.
-     * First, the plugin creates the requirement by requiring it.
-     * Then, the framework reads the empty requirement and sets its value.
+     * This method is used by the plugin to tell the framework its requirements.
      *
+     * @param map                 the target map to save the requirement
      * @param uniqueRequirementId the plugin unique requirement id
      * @param name                the display name of the config option to show to the user
      * @param isOptional          true, if an requirement has no to be filled
      * @param targetType          the target type of the requirement content. Has to be the same like <T>
      * @param <T>                 the target type of the requirement content. Has to be the same like targetType
-     * @return An empty requirement container OR the already created requirement
+     * @return An empty requirement container
      */
-    <T> Requirement<T> getOrAddAndReturn
-    (String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
-
-        if (requirements.containsKey(uniqueRequirementId)) {
-            try {
-                //noinspection unchecked
-                return (Requirement<T>) requirements.get(uniqueRequirementId);
-            } catch (Exception e) {
-                System.out.println("API Error. Unable to cast Requirement. " + e.toString());
-                return null;
-            }
-        } else {
-            Requirement<T> requirement = new Requirement<>(name, targetType, isOptional);
-            this.requirements.put(uniqueRequirementId, requirement);
-            return requirement;
+    private <T> Requirement<T> addRequirement(Map<String, Requirement<?>> map, String uniqueRequirementId, String name,
+                                              boolean isOptional, Class targetType) {
+        if (getAllEntries()
+                .anyMatch(entry -> entry.getKey().equals(uniqueRequirementId))) {
+            throw new IllegalArgumentException("Requirement Id " + uniqueRequirementId + " is already in use.");
         }
+        Requirement<T> requirement = new Requirement<>(name, targetType, isOptional);
+        map.put(uniqueRequirementId, requirement);
+        return requirement;
+    }
+
+    public Optional<? extends Requirement<?>> getRequirementById(String uniqueRequirementId) {
+        return getAllEntries()
+                .filter(entry -> entry.getKey().equals(uniqueRequirementId))
+                .map(Map.Entry::getValue).findFirst();
     }
 
     /**
@@ -63,8 +74,10 @@ public class Requirements {
      *
      * @return true, if all needed requirements had been set
      */
-    public Boolean allNeededRequirementsSet() {
-        return requirements.values().stream().allMatch(req -> req.isSet() || req.isOptional());
+    public Boolean isComplete() {
+        return getAllEntries()
+                .map(Map.Entry::getValue)
+                .allMatch(req -> req.isSet() || req.isOptional());
     }
 
     /**
@@ -72,25 +85,28 @@ public class Requirements {
      *
      * @return a list of unique requirement ids
      */
-    public List<String> getMissingRequirementIds() {
-        ArrayList<String> missingIds = new ArrayList<>();
-
-        requirements.forEach((key, value) -> {
-            if (!value.isSet()) {
-                missingIds.add(key);
-            }
-        });
-
-        return missingIds;
+    public List<Requirement<?>> getMissingRequirements() {
+        return getAllEntries()
+                .filter(entry -> !entry.getValue().isSet())
+                .map(Map.Entry::getValue)
+                .collect(Collectors.toList());
     }
 
-    /**
-     * Returns all requirements.
-     *
-     * @return A map with unique requirement ids and their requirements.
-     */
-    public Map<String, Requirement<?>> getAllRequirements() {
-        return requirements;
+    private Stream<Map.Entry<String, Requirement<?>>> getAllEntries() {
+        return Stream.of(inputRequirements.entrySet().stream(),
+                outputRequirements.entrySet().stream(),
+                parameterRequirements.entrySet().stream()).reduce(Stream::concat).get();
     }
 
+    public Collection<Requirement<?>> getInputRequirements() {
+        return inputRequirements.values();
+    }
+
+    public Collection<Requirement<?>> getOutputRequirements() {
+        return outputRequirements.values();
+    }
+
+    public Collection<Requirement<?>> getParameterRequirements() {
+        return parameterRequirements.values();
+    }
 }

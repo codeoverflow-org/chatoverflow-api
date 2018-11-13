@@ -94,4 +94,9 @@ public class Requirement<T> {
     public Class getTargetType() {
         return targetType;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
