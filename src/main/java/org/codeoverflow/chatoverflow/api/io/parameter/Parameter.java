@@ -1,10 +1,8 @@
 package org.codeoverflow.chatoverflow.api.io.parameter;
 
-public interface Parameter<T> {
-    String serialize();
+import org.codeoverflow.chatoverflow.api.io.Serializable;
 
-    void deserialize(String value);
-
+public interface Parameter<T> extends Serializable {
     T get();
 
     void set(T value);

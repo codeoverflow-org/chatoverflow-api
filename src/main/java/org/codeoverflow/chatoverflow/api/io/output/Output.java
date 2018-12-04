@@ -1,9 +1,7 @@
 package org.codeoverflow.chatoverflow.api.io.output;
 
-public interface Output {
+import org.codeoverflow.chatoverflow.api.io.Serializable;
+
+public interface Output extends Serializable {
     void init();
-
-    String serialize();
-
-    void deserialize(String value);
 }
