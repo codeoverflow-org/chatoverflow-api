@@ -1,9 +1,11 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+import org.codeoverflow.chatoverflow.api.io.Serializable;
+
 /**
  * A requirement holds a value of its type. This value can be set by the framework and used in the plugin.
  */
-public class Requirement<T> {
+public class Requirement<T extends Serializable> {
 
     private T value;
     private String name;

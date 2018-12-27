@@ -1,5 +1,7 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+import org.codeoverflow.chatoverflow.api.io.Serializable;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,15 +31,15 @@ public class Requirements {
     private Map<String, Requirement<?>> outputRequirements = new HashMap<>();
     private Map<String, Requirement<?>> parameterRequirements = new HashMap<>();
 
-    <T> Requirement<T> requireInput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+    <T extends Serializable> Requirement<T> requireInput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
         return addRequirement(inputRequirements, uniqueRequirementId, name, isOptional, targetType);
     }
 
-    <T> Requirement<T> requireOutput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+    <T extends Serializable> Requirement<T> requireOutput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
         return addRequirement(outputRequirements, uniqueRequirementId, name, isOptional, targetType);
     }
 
-    <T> Requirement<T> requireParameter(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
+    <T extends Serializable> Requirement<T> requireParameter(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
         return addRequirement(parameterRequirements, uniqueRequirementId, name, isOptional, targetType);
     }
 
@@ -52,8 +54,8 @@ public class Requirements {
      * @param <T>                 the target type of the requirement content. Has to be the same like targetType
      * @return An empty requirement container
      */
-    private <T> Requirement<T> addRequirement(Map<String, Requirement<?>> map, String uniqueRequirementId, String name,
-                                              boolean isOptional, Class targetType) {
+    private <T extends Serializable> Requirement<T> addRequirement(Map<String, Requirement<?>> map, String uniqueRequirementId, String name,
+                                                                   boolean isOptional, Class targetType) {
         if (getAllEntries()
                 .anyMatch(entry -> entry.getKey().equals(uniqueRequirementId))) {
             throw new IllegalArgumentException("Requirement Id " + uniqueRequirementId + " is already in use.");
@@ -63,7 +65,7 @@ public class Requirements {
         return requirement;
     }
 
-    public Optional<? extends Requirement<?>> getRequirementById(String uniqueRequirementId) {
+    public Optional<? extends Requirement<? extends Serializable>> getRequirementById(String uniqueRequirementId) {
         return getAllEntries()
                 .filter(entry -> entry.getKey().equals(uniqueRequirementId))
                 .map(Map.Entry::getValue).findFirst();
@@ -85,14 +87,14 @@ public class Requirements {
      *
      * @return a list of unique requirement ids
      */
-    public List<Requirement<?>> getMissingRequirements() {
+    public List<Requirement<? extends Serializable>> getMissingRequirements() {
         return getAllEntries()
                 .filter(entry -> !entry.getValue().isSet())
                 .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
     }
 
-    private Stream<Map.Entry<String, Requirement<?>>> getAllEntries() {
+    private Stream<Map.Entry<String, Requirement<? extends Serializable>>> getAllEntries() {
         return Stream.of(inputRequirements.entrySet().stream(),
                 outputRequirements.entrySet().stream(),
                 parameterRequirements.entrySet().stream()).reduce(Stream::concat).get();
