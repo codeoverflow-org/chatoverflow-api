@@ -27,9 +27,9 @@ public class Requirements {
      */
     public final Parameter parameter = new Parameter(this);
 
-    private Map<String, Requirement<?>> inputRequirements = new HashMap<>();
-    private Map<String, Requirement<?>> outputRequirements = new HashMap<>();
-    private Map<String, Requirement<?>> parameterRequirements = new HashMap<>();
+    private Map<String, Requirement<? extends Serializable>> inputRequirements = new HashMap<>();
+    private Map<String, Requirement<? extends Serializable>> outputRequirements = new HashMap<>();
+    private Map<String, Requirement<? extends Serializable>> parameterRequirements = new HashMap<>();
 
     <T extends Serializable> Requirement<T> requireInput(String uniqueRequirementId, String name, boolean isOptional, Class targetType) {
         return addRequirement(inputRequirements, uniqueRequirementId, name, isOptional, targetType);
@@ -100,15 +100,19 @@ public class Requirements {
                 parameterRequirements.entrySet().stream()).reduce(Stream::concat).get();
     }
 
-    public Collection<Requirement<?>> getInputRequirements() {
+    public Map<String, Requirement<? extends Serializable>> getRequirementMap() {
+        return getAllEntries().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    public Collection<Requirement<? extends Serializable>> getInputRequirements() {
         return inputRequirements.values();
     }
 
-    public Collection<Requirement<?>> getOutputRequirements() {
+    public Collection<Requirement<? extends Serializable>> getOutputRequirements() {
         return outputRequirements.values();
     }
 
-    public Collection<Requirement<?>> getParameterRequirements() {
+    public Collection<Requirement<? extends Serializable>> getParameterRequirements() {
         return parameterRequirements.values();
     }
 }
