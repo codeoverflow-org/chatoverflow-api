@@ -1,5 +1,7 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
+import javax.naming.OperationNotSupportedException;
+
 public class ChatMessageAuthor {
 
     private String displayName;
@@ -16,6 +18,7 @@ public class ChatMessageAuthor {
         this.broadcaster = broadcaster;
         this.moderator = moderator;
         this.subscriber = subscriber;
+
     }
 
     public String getDisplayName() {
