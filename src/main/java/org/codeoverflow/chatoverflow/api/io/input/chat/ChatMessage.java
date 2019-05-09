@@ -67,4 +67,8 @@ public class ChatMessage {
         }
         return "<span color=\"" + color + "\">" + author.toHTMLString() + ": " + htmlMessage + "</span>";
     }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
 }
