@@ -3,6 +3,10 @@ package org.codeoverflow.chatoverflow.api.io.dto.chat.twitch;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.Channel;
 import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
 
+/**
+ * TODO Find out for what this is used skateKappa
+ * The representation of channel of a twitch streamer
+ */
 public class TwitchChannel extends Channel implements Identifiable {
     private String id;
     private int follower;
@@ -23,30 +27,55 @@ public class TwitchChannel extends Channel implements Identifiable {
         this.created_at = created_at;
     }
 
+    /**
+     * @return a unique id to identify the channel
+     */
+    @Override
     public String getId() {
         return id;
     }
 
+    /**
+     * @return how many followers the streamer has
+     */
     public int getFollower() {
         return follower;
     }
 
+    /**
+     * @return how many views the streamer currently has
+     */
     public int getViews() {
         return views;
     }
 
+
+    /**
+     * @return the current title of the stream
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @return the game that is currently played
+     */
     public String getGame() {
         return game;
     }
 
+    /**
+     * @return if the streamer is a twitch partner
+     */
     public Boolean getPartner() {
         return partner;
     }
 
+    /**
+     * TODO Is this a timestamp or a formatted string?
+     *
+     * @return when the stream was created
+     */
     public String getCreated_at() {
         return created_at;
     }

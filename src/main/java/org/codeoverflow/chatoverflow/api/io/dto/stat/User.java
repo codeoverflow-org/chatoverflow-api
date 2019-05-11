@@ -1,7 +1,10 @@
-package org.codeoverflow.chatoverflow.api.io.dto.service;
+package org.codeoverflow.chatoverflow.api.io.dto.stat;
 
 import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
 
+/**
+ * Containing the statistics of a services user
+ */
 public class User implements Identifiable {
     private String id;
     private String name;
@@ -17,22 +20,37 @@ public class User implements Identifiable {
         this.viewcount = viewcount;
     }
 
+    /**
+     * @return The unique id of a user
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * @return the name of the user
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return description of the user
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @return the profile picture of the user
+     */
     public String getImage() {
         return image;
     }
 
+    /**
+     * @return how many views the user currently has
+     */
     public int getViewCount() {
         return viewcount;
     }
@@ -57,6 +75,9 @@ public class User implements Identifiable {
         this.viewcount = viewcount;
     }
 
+    /**
+     * @return A String that contains the name and the description of the user
+     */
     @Override
     public String toString() {
         return "Name: " + name + ", description: " + description;

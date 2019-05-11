@@ -6,6 +6,9 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessage;
 
 import java.util.List;
 
+/**
+ * Chat message that is send in a twitch chat
+ */
 public class TwitchChatMessage extends ChatMessage {
 
     public TwitchChatMessage(TwitchChatMessageAuthor author, String message, Long timestamp, Channel channel) {

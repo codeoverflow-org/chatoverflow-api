@@ -1,6 +1,5 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
-import org.codeoverflow.chatoverflow.api.io.input.chat.ChatInput;
-
+//TODO Implement
 public interface YouTubeChatInput extends ChatInput {
 }

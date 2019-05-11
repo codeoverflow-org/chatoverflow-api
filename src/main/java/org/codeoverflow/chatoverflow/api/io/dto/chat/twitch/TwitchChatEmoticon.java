@@ -3,6 +3,9 @@ package org.codeoverflow.chatoverflow.api.io.dto.chat.twitch;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatEmoticon;
 import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
 
+/**
+ * An emoji that is displayed in twitch chat messages
+ */
 public class TwitchChatEmoticon extends ChatEmoticon implements Identifiable {
 
     private String id;
@@ -12,6 +15,10 @@ public class TwitchChatEmoticon extends ChatEmoticon implements Identifiable {
         this.id = id;
     }
 
+
+    /**
+     * @return twitchs unique id to identify the emoji
+     */
     @Override
     public String getId() {
         return null;

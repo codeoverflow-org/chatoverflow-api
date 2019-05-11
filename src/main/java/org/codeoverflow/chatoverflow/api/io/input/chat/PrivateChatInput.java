@@ -7,23 +7,24 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * A input that connects to a service using a connector and allows to handle incoming chat messages
+ * Just like {@link ChatInput} but with private chats instead of public ones
  *
  * @param <T> type of the incoming chat messages
  */
-public interface ChatInput<T extends ChatMessage> extends Input {
+public interface PrivateChatInput<T extends ChatMessage> extends Input {
 
     /**
-     * Let's you retrieve all chat messages that were recently received
+     * Let's you retrieve all private messages that were recently received
      *
      * @param lastMilliseconds how old messages you want to get, maximum age in milliseconds
      * @return list that contains copies of all last messages
      */
-    List<T> getLastMessages(long lastMilliseconds);
+    List<T> getLastPrivateMessages(long lastMilliseconds);
+
 
     /**
-     * Let's you register a simple handler immediately react on incoming messages
-     * @param handler the consumer to handle incoming messages
+     * Let's you register a simple handler immediately react on incoming private messages
+     * @param handler
      */
-    void registerMessageHandler(Consumer<T> handler);
+    void registerPrivateMessageHandler(Consumer<T> handler);
 }
