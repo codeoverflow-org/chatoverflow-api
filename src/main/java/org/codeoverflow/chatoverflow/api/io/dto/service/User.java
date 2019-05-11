@@ -1,6 +1,8 @@
-package org.codeoverflow.chatoverflow.api.io.input.chat;
+package org.codeoverflow.chatoverflow.api.io.dto.service;
 
-public class User {
+import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
+
+public class User implements Identifiable {
     private String id;
     private String name;
     private String description;
@@ -33,6 +35,26 @@ public class User {
 
     public int getViewCount() {
         return viewcount;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setViewcount(int viewcount) {
+        this.viewcount = viewcount;
     }
 
     @Override

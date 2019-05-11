@@ -1,7 +1,7 @@
 package org.codeoverflow.chatoverflow.api.io.input.stat;
 
+import org.codeoverflow.chatoverflow.api.io.dto.service.User;
 import org.codeoverflow.chatoverflow.api.io.input.Input;
-import org.codeoverflow.chatoverflow.api.io.input.chat.User;
 
 import java.util.List;
 

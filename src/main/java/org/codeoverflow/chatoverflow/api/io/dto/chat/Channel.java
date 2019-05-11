@@ -1,4 +1,4 @@
-package org.codeoverflow.chatoverflow.api.io.input.chat;
+package org.codeoverflow.chatoverflow.api.io.dto.chat;
 
 public class Channel {
     private String name;
@@ -9,5 +9,9 @@ public class Channel {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

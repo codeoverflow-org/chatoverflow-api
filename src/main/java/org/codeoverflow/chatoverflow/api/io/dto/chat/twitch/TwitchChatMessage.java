@@ -1,4 +1,8 @@
-package org.codeoverflow.chatoverflow.api.io.input.chat;
+package org.codeoverflow.chatoverflow.api.io.dto.chat.twitch;
+
+import org.codeoverflow.chatoverflow.api.io.dto.chat.Channel;
+import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatEmoticon;
+import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessage;
 
 import java.util.List;
 

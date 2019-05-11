@@ -1,6 +1,9 @@
-package org.codeoverflow.chatoverflow.api.io.input.chat;
+package org.codeoverflow.chatoverflow.api.io.dto.chat.twitch;
 
-public class TwitchChannel extends Channel {
+import org.codeoverflow.chatoverflow.api.io.dto.chat.Channel;
+import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
+
+public class TwitchChannel extends Channel implements Identifiable {
     private String id;
     private int follower;
     private int views;
@@ -46,5 +49,33 @@ public class TwitchChannel extends Channel {
 
     public String getCreated_at() {
         return created_at;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setFollower(int follower) {
+        this.follower = follower;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGame(String game) {
+        this.game = game;
+    }
+
+    public void setPartner(Boolean partner) {
+        this.partner = partner;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 }

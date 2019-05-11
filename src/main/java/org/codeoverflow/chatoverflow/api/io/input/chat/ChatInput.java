@@ -1,5 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
+import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessage;
 import org.codeoverflow.chatoverflow.api.io.input.Input;
 
 import java.util.List;

@@ -1,10 +1,12 @@
-package org.codeoverflow.chatoverflow.api.io.input.chat;
+package org.codeoverflow.chatoverflow.api.io.dto.chat;
+
+import org.codeoverflow.chatoverflow.api.io.dto.Formatable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ChatMessage {
+public class ChatMessage implements Formatable {
     private String message;
     private ChatMessageAuthor author;
     private Long timestamp;
@@ -54,17 +56,47 @@ public class ChatMessage {
         return color;
     }
 
-    public String toString() {
-        return author.getDisplayName() + ": " + message;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
+    public void setAuthor(ChatMessageAuthor author) {
+        this.author = author;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
+
+    public void setEmoticons(List<ChatEmoticon> emoticons) {
+        this.emoticons = emoticons;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String toString() {
+        return author.toString() + ": " + message;
+    }
+
+    @Override
     public String toHTMLString() {
         StringBuilder htmlMessage = new StringBuilder(message);
         for (int i = emoticons.size() - 1; i >= 0; i--) {
             ChatEmoticon emoticon = emoticons.get(i);
             String htmlImage = emoticon.toHTMLString();
-            htmlMessage.replace(emoticon.getIndex(), emoticon.getIndex() + emoticon.getRegex().length(), htmlImage);
+            htmlMessage.replace(emoticon.getIndex(), emoticon.getIndex() + emoticon.getAsString().length(), htmlImage);
         }
         return "<span color=\"" + color + "\">" + author.toHTMLString() + ": " + htmlMessage + "</span>";
+    }
+
+    @Override
+    public String toMarkdownString() {
+        return author.toMarkdownString() + ":" + message;
     }
 }
