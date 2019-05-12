@@ -23,6 +23,7 @@ public interface ChatInput<T extends ChatMessage> extends Input {
 
     /**
      * Let's you register a simple handler immediately react on incoming messages
+     *
      * @param handler the consumer to handle incoming messages
      */
     void registerMessageHandler(Consumer<T> handler);

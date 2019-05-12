@@ -9,30 +9,24 @@ import java.util.List;
 /**
  * A generic message that is send in a chat
  */
-public class ChatMessage implements Formatable {
+public class ChatMessage<T extends ChatMessageAuthor, U extends Channel, V extends ChatEmoticon>  implements Formatable {
     private final String message;
-    private final ChatMessageAuthor author;
+    private final T author;
     private final Long timestamp;
-    private final Channel channel;
-    private final List<ChatEmoticon> emoticons;
-    private final String color;
+    private final U channel;
+    private final List<V> emoticons;
 
-    public ChatMessage(ChatMessageAuthor author, String message, Long timestamp, Channel channel) {
-        this(author, message, timestamp, channel, new ArrayList<>(), "#000000");
+    public ChatMessage(T author, String message, Long timestamp, U channel) {
+        this(author, message, timestamp, channel, new ArrayList<>());
     }
 
-    public ChatMessage(ChatMessageAuthor author, String message, Long timestamp, Channel channel, List<ChatEmoticon> emoticons) {
-        this(author, message, timestamp, channel, emoticons, "#000000");
-    }
-
-    public ChatMessage(ChatMessageAuthor author, String message, Long timestamp, Channel channel, List<ChatEmoticon> emoticons, String color) {
+    public ChatMessage(T author, String message, Long timestamp, U channel, List<V> emoticons) {
         Collections.sort(emoticons);
         this.message = message;
         this.author = author;
         this.timestamp = timestamp;
         this.channel = channel;
         this.emoticons = emoticons;
-        this.color = color;
     }
 
     /**
@@ -45,7 +39,7 @@ public class ChatMessage implements Formatable {
     /**
      * @return the author that send the message
      */
-    public ChatMessageAuthor getAuthor() {
+    public T getAuthor() {
         return author;
     }
 
@@ -59,7 +53,7 @@ public class ChatMessage implements Formatable {
     /**
      * @return channel where the message was send
      */
-    public Channel getChannel() {
+    public U getChannel() {
         return channel;
     }
 
@@ -68,15 +62,8 @@ public class ChatMessage implements Formatable {
      *
      * @return a list of all emoticons that were send in the message, empty if no emoticons were send
      */
-    public List<ChatEmoticon> getEmoticons() {
+    public List<V> getEmoticons() {
         return emoticons;
-    }
-
-    /**
-     * @return color of the message as hex code (with leading #), default is black
-     */
-    public String getColor() {
-        return color;
     }
 
     /**
@@ -97,7 +84,7 @@ public class ChatMessage implements Formatable {
             String htmlImage = emoticon.toHTMLString();
             htmlMessage.replace(emoticon.getIndex(), emoticon.getIndex() + emoticon.getAsString().length(), htmlImage);
         }
-        return "<span color=\"" + color + "\">" + author.toHTMLString() + ": " + htmlMessage + "</span>";
+        return "<span>" + author.toHTMLString() + ": " + htmlMessage + "</span>";
     }
 
     /**

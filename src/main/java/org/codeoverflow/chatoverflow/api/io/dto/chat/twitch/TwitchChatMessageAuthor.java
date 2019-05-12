@@ -7,33 +7,36 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessageAuthor;
  */
 public class TwitchChatMessageAuthor extends ChatMessageAuthor {
 
-    private final boolean premium;
+    private final boolean turbo;
     private final boolean broadcaster;
     private final boolean moderator;
     private final boolean subscriber;
 
     public TwitchChatMessageAuthor(String displayName) {
         super(displayName);
-        this.premium = false;
-        broadcaster = false;
-        moderator = false;
-        subscriber = false;
+        this.turbo = false;
+        this.broadcaster = false;
+        this.moderator  = false;
+        this.subscriber = false;
     }
 
-    public TwitchChatMessageAuthor(String displayName, boolean broadcaster, boolean moderator, boolean subscriber, boolean premium) {
-        super(displayName);
-        this.premium = premium;
+    public TwitchChatMessageAuthor(String displayName, String color) {
+        this(displayName, color, false, false, false, false);
+    }
+
+    public TwitchChatMessageAuthor(String displayName, String color, boolean broadcaster, boolean moderator, boolean subscriber, boolean turbo) {
+        super(displayName, color);
+        this.turbo = turbo;
         this.broadcaster = broadcaster;
         this.moderator  = moderator;
         this.subscriber = subscriber;
     }
 
     /**
-     * TODO Remove
+     * @return true if the user has twitch turbo, false otherwise
      */
-    @Deprecated
-    public boolean isPremium() {
-        return premium;
+    public boolean isTrubo() {
+        return turbo;
     }
 
     /**

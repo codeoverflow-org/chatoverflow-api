@@ -24,6 +24,7 @@ public interface PrivateChatInput<T extends ChatMessage> extends Input {
 
     /**
      * Let's you register a simple handler immediately react on incoming private messages
+     *
      * @param handler
      */
     void registerPrivateMessageHandler(Consumer<T> handler);
