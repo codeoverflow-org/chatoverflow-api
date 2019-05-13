@@ -6,11 +6,11 @@ import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
  * Containing the statistics of a services user
  */
 public class User implements Identifiable {
-    private String id;
-    private String name;
-    private String description;
-    private String image;
-    private int viewcount;
+    private final String id;
+    private final String name;
+    private final String description;
+    private final String image;
+    private final int viewcount;
 
     public User(String id, String name, String description, String image, int viewcount) {
         this.id = id;
@@ -53,26 +53,6 @@ public class User implements Identifiable {
      */
     public int getViewCount() {
         return viewcount;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public void setViewcount(int viewcount) {
-        this.viewcount = viewcount;
     }
 
     /**

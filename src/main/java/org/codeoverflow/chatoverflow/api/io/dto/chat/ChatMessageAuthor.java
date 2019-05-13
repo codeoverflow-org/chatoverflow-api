@@ -7,7 +7,7 @@ import org.codeoverflow.chatoverflow.api.io.dto.Formatable;
  */
 public class ChatMessageAuthor implements Formatable {
 
-    private String displayName;
+    private final String displayName;
 
     public ChatMessageAuthor(String displayName) {
         this.displayName = displayName;
@@ -19,10 +19,6 @@ public class ChatMessageAuthor implements Formatable {
      */
     public String getDisplayName() {
         return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
     }
 
     /**

@@ -7,14 +7,17 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessageAuthor;
  */
 public class TwitchChatMessageAuthor extends ChatMessageAuthor {
 
-    private boolean premium;
-    private boolean broadcaster;
-    private boolean moderator;
-    private boolean subscriber;
+    private final boolean premium;
+    private final boolean broadcaster;
+    private final boolean moderator;
+    private final boolean subscriber;
 
     public TwitchChatMessageAuthor(String displayName) {
         super(displayName);
         this.premium = false;
+        broadcaster = false;
+        moderator = false;
+        subscriber = false;
     }
 
     public TwitchChatMessageAuthor(String displayName, boolean broadcaster, boolean moderator, boolean subscriber, boolean premium) {
@@ -52,21 +55,5 @@ public class TwitchChatMessageAuthor extends ChatMessageAuthor {
      */
     public boolean isSubscriber() {
         return subscriber;
-    }
-
-    public void setPremium(boolean premium) {
-        this.premium = premium;
-    }
-
-    public void setBroadcaster(boolean broadcaster) {
-        this.broadcaster = broadcaster;
-    }
-
-    public void setModerator(boolean moderator) {
-        this.moderator = moderator;
-    }
-
-    public void setSubscriber(boolean subscriber) {
-        this.subscriber = subscriber;
     }
 }

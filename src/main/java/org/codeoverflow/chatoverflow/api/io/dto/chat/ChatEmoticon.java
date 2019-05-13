@@ -6,9 +6,9 @@ import org.codeoverflow.chatoverflow.api.io.dto.Formatable;
  * Generic emoticons that are displayed in the message
  */
 public class ChatEmoticon implements Comparable<ChatEmoticon>, Formatable {
-    private String asString;
-    private String imageURL;
-    private int index;
+    private final String asString;
+    private final String imageURL;
+    private final int index;
 
     public ChatEmoticon(String asString, String imageURL, int index) {
         this.asString = asString;
@@ -39,18 +39,6 @@ public class ChatEmoticon implements Comparable<ChatEmoticon>, Formatable {
      */
     public int getIndex() {
         return index;
-    }
-
-    public void setAsString(String asString) {
-        this.asString = asString;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
     }
 
     public int compareTo(ChatEmoticon other) {

@@ -8,7 +8,7 @@ import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
  */
 public class TwitchChatEmoticon extends ChatEmoticon implements Identifiable {
 
-    private String id;
+    private final String id;
 
     public TwitchChatEmoticon(String regex, String id, int index) {
         super(regex, "https://static-cdn.jtvnw.net/emoticons/v1/" + id + "/1.0", index);
@@ -22,9 +22,5 @@ public class TwitchChatEmoticon extends ChatEmoticon implements Identifiable {
     @Override
     public String getId() {
         return null;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

@@ -10,12 +10,12 @@ import java.util.List;
  * A generic message that is send in a chat
  */
 public class ChatMessage implements Formatable {
-    private String message;
-    private ChatMessageAuthor author;
-    private Long timestamp;
-    private Channel channel;
-    private List<ChatEmoticon> emoticons;
-    private String color;
+    private final String message;
+    private final ChatMessageAuthor author;
+    private final Long timestamp;
+    private final Channel channel;
+    private final List<ChatEmoticon> emoticons;
+    private final String color;
 
     public ChatMessage(ChatMessageAuthor author, String message, Long timestamp, Channel channel) {
         this(author, message, timestamp, channel, new ArrayList<>(), "#000000");
@@ -77,30 +77,6 @@ public class ChatMessage implements Formatable {
      */
     public String getColor() {
         return color;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public void setAuthor(ChatMessageAuthor author) {
-        this.author = author;
-    }
-
-    public void setTimestamp(Long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public void setChannel(Channel channel) {
-        this.channel = channel;
-    }
-
-    public void setEmoticons(List<ChatEmoticon> emoticons) {
-        this.emoticons = emoticons;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     /**
