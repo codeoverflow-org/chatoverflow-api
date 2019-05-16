@@ -85,7 +85,7 @@ public class Requirement<T extends Serializable> {
      * @param optional true, if the requirement does not need to be set
      */
     public void setOptional(boolean optional) {
-        isOptional = optional;
+        this.isOptional = optional;
     }
 
     /**
