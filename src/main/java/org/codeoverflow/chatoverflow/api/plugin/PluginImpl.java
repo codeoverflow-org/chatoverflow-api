@@ -8,8 +8,7 @@ import org.codeoverflow.chatoverflow.api.plugin.configuration.Requirements;
  */
 public abstract class PluginImpl implements Plugin {
 
-    protected int loopInterval = 1000;
-    protected Requirements require = new Requirements();
+    private Requirements require = new Requirements();
     private PluginManager manager;
 
     public PluginImpl(PluginManager manager) {
@@ -18,7 +17,7 @@ public abstract class PluginImpl implements Plugin {
 
     @Override
     public int getLoopInterval() {
-        return loopInterval;
+        return 1000;
     }
 
     @Override
