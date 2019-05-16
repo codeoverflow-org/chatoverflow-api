@@ -40,7 +40,7 @@ public class DiscordChatMessage extends ChatMessage<DiscordChatMessageAuthor, Di
     public String toHTMLString() {
         StringBuilder htmlMessage = new StringBuilder(getMessage());
         for (int i = getEmoticons().size() - 1; i >= 0; i--) {
-            DiscordChatCustomEmoticon emoticon = (DiscordChatCustomEmoticon) getEmoticons().get(i);
+            DiscordChatCustomEmoticon emoticon = getEmoticons().get(i);
             String htmlImage = emoticon.toHTMLString();
             htmlMessage.replace(emoticon.getIndex(), emoticon.getIndex() + emoticon.getRaw().length(), htmlImage);
         }
