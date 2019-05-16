@@ -11,8 +11,7 @@ public class DiscordChatMessageAuthor extends ChatMessageAuthor implements Ident
     private String id;
 
     public DiscordChatMessageAuthor(String displayName, String id) {
-        super(displayName);
-        this.id = id;
+        this(displayName, id, "");
     }
 
     public DiscordChatMessageAuthor(String displayName, String id, String color) {
