@@ -10,13 +10,13 @@ public class ChatMessageAuthor implements Formatable {
     private final String displayName;
     private final String color;
 
+    public ChatMessageAuthor(String displayName) {
+        this(displayName, "#000000");
+    }
+
     public ChatMessageAuthor(String displayName, String color) {
         this.displayName = displayName;
         this.color = color;
-    }
-
-    public ChatMessageAuthor(String displayName) {
-        this(displayName, "#000000");
     }
 
     /**
