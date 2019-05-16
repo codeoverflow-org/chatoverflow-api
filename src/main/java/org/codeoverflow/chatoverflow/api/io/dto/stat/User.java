@@ -10,14 +10,14 @@ public class User implements Identifiable {
     private final String name;
     private final String description;
     private final String image;
-    private final int viewcount;
+    private final int viewCount;
 
-    public User(String id, String name, String description, String image, int viewcount) {
+    public User(String id, String name, String description, String image, int viewCount) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.image = image;
-        this.viewcount = viewcount;
+        this.viewCount = viewCount;
     }
 
     /**
@@ -52,7 +52,7 @@ public class User implements Identifiable {
      * @return how many views the user currently has
      */
     public int getViewCount() {
-        return viewcount;
+        return viewCount;
     }
 
     /**
