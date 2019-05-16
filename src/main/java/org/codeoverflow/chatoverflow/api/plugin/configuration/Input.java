@@ -1,6 +1,7 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
 import org.codeoverflow.chatoverflow.api.io.input.SampleInput;
+import org.codeoverflow.chatoverflow.api.io.input.SerialInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.DiscordChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.MockUpChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.TwitchChatInput;
@@ -75,6 +76,18 @@ public class Input {
      */
     public Requirement<DiscordChatInput> discordChat(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, DiscordChatInput.class);
+    }
+
+    /**
+     * Requires a connection with a device connected to a serial port (an Arduino for example)
+     *
+     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
+     * @param displayName Is displayed to the framework user and to tell him what to enter
+     * @param isOptional true if this requirement is optional, false if mandatory
+     * @return the requirement object
+     */
+    public Requirement<SerialInput> serial(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, SerialInput.class);
     }
 
     // Add more inputs here
