@@ -62,7 +62,7 @@ public class Input {
      * @param isOptional true if this requirement is optional, false if mandatory
      * @return the requirement object
      */
-    public Requirement<SampleInput> sampelInput(String uniqueRequirementId, String displayName, boolean isOptional) {
+    public Requirement<SampleInput> sampleInput(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, SampleInput.class);
     }
 
