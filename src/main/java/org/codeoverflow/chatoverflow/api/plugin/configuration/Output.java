@@ -53,8 +53,6 @@ public class Output {
     }
 
     /**
-     * Requires a FileSystemActor that has to be created by the framework user.
-     *
      * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
      * @param displayName Is displayed to the framework user and to tell him what to enter
      * @param isOptional true if this requirement is optional, false if mandatory
