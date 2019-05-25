@@ -10,20 +10,13 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatEmoticon;
  * Discords default emoji are unicode emoji so they just be contained in the raw message
  */
 public class DiscordChatCustomEmoticon extends ChatEmoticon implements Identifiable {
-    private String id;
-    private boolean isAnimated;
+    private final String id;
+    private final boolean isAnimated;
 
     public DiscordChatCustomEmoticon(String asString, int index, boolean animated, String id) {
         super(asString, "https://cdn.discordapp.com/emojis/" + id + (animated ? ".gif" : ".png"), index);
         this.id = id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setAnimated(boolean animated) {
-        isAnimated = animated;
+        this.isAnimated = animated;
     }
 
     /**

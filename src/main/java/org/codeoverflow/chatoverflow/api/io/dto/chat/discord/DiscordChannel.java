@@ -8,9 +8,9 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.Channel;
  */
 public class DiscordChannel extends Channel implements Identifiable {
 
-    private String id;
+    private final String id;
 
-    private String topic;
+    private final String topic;
 
     public DiscordChannel(String name, String id, String topic) {
         super(name);
@@ -22,14 +22,6 @@ public class DiscordChannel extends Channel implements Identifiable {
         super(name);
         this.id = id;
         this.topic = "";
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
     }
 
     /**
