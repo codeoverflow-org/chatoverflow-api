@@ -1,18 +1,15 @@
 package org.codeoverflow.chatoverflow.api.io.dto.event.tipeeestream;
 
-import org.codeoverflow.chatoverflow.api.io.dto.event.Event;
-import org.codeoverflow.chatoverflow.api.io.dto.stat.User;
-
 import java.time.ZonedDateTime;
 
-public class TipeeeStreamFollow implements Event {
+public class TipeeeStreamFollow implements TipeeeStreamEvent {
     private final ZonedDateTime createdAt;
-    private final User user;
+    private final String follower;
     private final String message;
 
-    public TipeeeStreamFollow(ZonedDateTime createdAt, User user, String message) {
+    public TipeeeStreamFollow(ZonedDateTime createdAt, String follower, String message) {
         this.createdAt = createdAt;
-        this.user = user;
+        this.follower = follower;
         this.message = message;
     }
 
@@ -21,12 +18,17 @@ public class TipeeeStreamFollow implements Event {
         return createdAt;
     }
 
-    public User getUser() {
-        return user;
+    public String getFollower() {
+        return follower;
     }
 
     @Override
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public String getType() {
+        return "follow";
     }
 }

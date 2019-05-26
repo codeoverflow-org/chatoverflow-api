@@ -1,20 +1,16 @@
 package org.codeoverflow.chatoverflow.api.io.dto.event.tipeeestream;
 
-import org.codeoverflow.chatoverflow.api.io.dto.event.Event;
-import org.codeoverflow.chatoverflow.api.io.dto.stat.User;
-
-import java.math.BigDecimal;
 import java.time.ZonedDateTime;
 
-public class TipeeeStreamDonation implements Event {
+public class TipeeeStreamDonation implements TipeeeStreamEvent {
     private final ZonedDateTime createdAt;
-    private final User donor;
+    private final String donor;
     private final String message;
-    private final BigDecimal amount;
+    private final Double amount;
     private final String currency;
     private final String formattedAmount;
 
-    public TipeeeStreamDonation(ZonedDateTime createdAt, User donor, String message, BigDecimal amount, String currency, String formattedAmount) {
+    public TipeeeStreamDonation(ZonedDateTime createdAt, String donor, String message, Double amount, String currency, String formattedAmount) {
         this.createdAt = createdAt;
         this.donor = donor;
         this.message = message;
@@ -28,7 +24,7 @@ public class TipeeeStreamDonation implements Event {
         return createdAt;
     }
 
-    public User getDonor() {
+    public String getDonor() {
         return donor;
     }
 
@@ -36,7 +32,12 @@ public class TipeeeStreamDonation implements Event {
         return message;
     }
 
-    public BigDecimal getAmount() {
+    @Override
+    public String getType() {
+        return "donation";
+    }
+
+    public Double getAmount() {
         return amount;
     }
 
