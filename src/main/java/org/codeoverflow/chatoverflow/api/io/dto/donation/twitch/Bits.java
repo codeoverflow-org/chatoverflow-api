@@ -2,6 +2,8 @@ package org.codeoverflow.chatoverflow.api.io.dto.donation.twitch;
 
 import org.codeoverflow.chatoverflow.api.io.dto.User;
 
+import java.time.OffsetDateTime;
+
 public class Bits {
     private final int amount;
     private final int totalAmount;
@@ -11,22 +13,22 @@ public class Bits {
     private final String context;
     private final BitsBadge newBadge;
     private final User user;
-    private final Long timestamp;
+    private final OffsetDateTime time;
 
     public Bits(int amount, int totalAmount, String channelID, String channelName, String chatMessage, String context,
-                String userID, String userName, Long timestamp) {
+                String userID, String userName, OffsetDateTime time) {
         this(amount, totalAmount, channelID, channelName, chatMessage, context, null,
-                new User(userID, userName), timestamp);
+                new User(userID, userName), time);
     }
 
     public Bits(int amount, int totalAmount, String channelID, String channelName, String chatMessage, String context,
-                int newBadgeTier, String userID, String userName, Long timestamp) {
+                int newBadgeTier, String userID, String userName, OffsetDateTime time) {
         this(amount, totalAmount, channelID, channelName, chatMessage, context, new BitsBadge(channelID, channelName,
-                chatMessage, new User(userID, userName), newBadgeTier, timestamp), new User(userID, userName), timestamp);
+                chatMessage, new User(userID, userName), newBadgeTier, time), new User(userID, userName), time);
     }
 
     public Bits(int amount, int totalAmount, String channelID, String channelName, String chatMessage, String context,
-                BitsBadge newBadge, User user, Long timestamp) {
+                BitsBadge newBadge, User user, OffsetDateTime time) {
         this.amount = amount;
         this.totalAmount = totalAmount;
         this.channelID = channelID;
@@ -35,7 +37,7 @@ public class Bits {
         this.context = context;
         this.newBadge = newBadge;
         this.user = user;
-        this.timestamp = timestamp;
+        this.time = time;
     }
 
     /**
@@ -97,7 +99,7 @@ public class Bits {
     /**
      * @return time when the Bits were donated
      */
-    public Long getTimestamp() {
-        return timestamp;
+    public OffsetDateTime getTime() {
+        return time;
     }
 }

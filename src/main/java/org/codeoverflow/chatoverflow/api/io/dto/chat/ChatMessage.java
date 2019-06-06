@@ -2,6 +2,7 @@ package org.codeoverflow.chatoverflow.api.io.dto.chat;
 
 import org.codeoverflow.chatoverflow.api.io.dto.Formatable;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,22 +10,22 @@ import java.util.List;
 /**
  * A generic message that is send in a chat
  */
-public class ChatMessage<T extends ChatMessageAuthor, U extends Channel, V extends ChatEmoticon>  implements Formatable {
+public class ChatMessage<T extends ChatMessageAuthor, U extends TextChannel, V extends ChatEmoticon>  implements Formatable {
     private final String message;
     private final T author;
-    private final Long timestamp;
+    private final OffsetDateTime time;
     private final U channel;
     private final List<V> emoticons;
 
-    public ChatMessage(T author, String message, Long timestamp, U channel) {
-        this(author, message, timestamp, channel, new ArrayList<>());
+    public ChatMessage(T author, String message, OffsetDateTime time, U channel) {
+        this(author, message, time, channel, new ArrayList<>());
     }
 
-    public ChatMessage(T author, String message, Long timestamp, U channel, List<V> emoticons) {
+    public ChatMessage(T author, String message, OffsetDateTime time, U channel, List<V> emoticons) {
         Collections.sort(emoticons);
         this.message = message;
         this.author = author;
-        this.timestamp = timestamp;
+        this.time = time;
         this.channel = channel;
         this.emoticons = emoticons;
     }
@@ -44,10 +45,10 @@ public class ChatMessage<T extends ChatMessageAuthor, U extends Channel, V exten
     }
 
     /**
-     * @return timestamp when the message was created (value in epoch millis)
+     * @return time when the message was created
      */
-    public Long getTimestamp() {
-        return timestamp;
+    public OffsetDateTime getTime() {
+        return time;
     }
 
     /**

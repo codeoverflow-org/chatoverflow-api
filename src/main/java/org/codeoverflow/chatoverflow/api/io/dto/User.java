@@ -1,42 +1,35 @@
 package org.codeoverflow.chatoverflow.api.io.dto;
 
+/**
+ * A basic user where we only know a unique identifier and a displayed name
+ */
 public class User implements Identifiable {
-    private final String id;
+    private final String identifier;
     private final String name;
-    private final String login;
 
     public User(String name) {
-        this(name, name, "");
+        this(name, name);
     }
 
-    public User(String id, String name) {
-        this(id, name, "");
-    }
-
-    public User(String id, String name, String login) {
-        this.id = id;
+    public User(String identifier, String name) {
+        this.identifier = identifier;
         this.name = name;
-        this.login = login;
     }
 
     /**
-     * @return unique user id if available, otherwise same as user name
+     *  A unique user identifier:<br>
+     *  An id or the unique login name. May be the same as the users display name
+     *
+     * @return the unique identifier of the user
      */
     public String getId() {
-        return id;
+        return identifier;
     }
 
     /**
-     * @return user display name
+     * @return users display name
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * @return unique user login name
-     */
-    public String getLogin() {
-        return login;
     }
 }

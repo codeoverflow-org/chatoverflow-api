@@ -1,29 +1,27 @@
 package org.codeoverflow.chatoverflow.api.io.dto.chat;
 
 import org.codeoverflow.chatoverflow.api.io.dto.Formatable;
+import org.codeoverflow.chatoverflow.api.io.dto.User;
 
 /**
  * The author of a chat message
  */
-public class ChatMessageAuthor implements Formatable {
+public class ChatMessageAuthor extends User implements Formatable {
 
-    private final String displayName;
     private final String color;
 
+    public ChatMessageAuthor(String identifier, String name, String color) {
+        super(identifier, name);
+        this.color = color;
+    }
+
     public ChatMessageAuthor(String displayName, String color) {
-        this.displayName = displayName;
+        super(displayName);
         this.color = color;
     }
 
     public ChatMessageAuthor(String displayName) {
         this(displayName, "#000000");
-    }
-
-    /**
-     * @return the name of the author that is displayed in chat
-     */
-    public String getDisplayName() {
-        return displayName;
     }
 
     /**
@@ -37,7 +35,7 @@ public class ChatMessageAuthor implements Formatable {
      * @return The display name as raw string
      */
     public String toString() {
-        return displayName;
+        return getName();
     }
 
     /**
@@ -45,7 +43,7 @@ public class ChatMessageAuthor implements Formatable {
      */
     @Override
     public String toHTMLString() {
-        return "<span color=\"" + color + "\"><b>" + displayName + "</b></span>";
+        return "<span color=\"" + color + "\"><b>" + getName() + "</b></span>";
     }
 
     /**
@@ -53,6 +51,6 @@ public class ChatMessageAuthor implements Formatable {
      */
     @Override
     public String toMarkdownString() {
-        return "**" + displayName + "**";
+        return "**" + getName() + "**";
     }
 }

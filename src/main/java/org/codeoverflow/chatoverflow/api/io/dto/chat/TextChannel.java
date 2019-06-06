@@ -3,10 +3,10 @@ package org.codeoverflow.chatoverflow.api.io.dto.chat;
 /**
  * A generic channel in which messages are exchanged
  */
-public class Channel {
+public class TextChannel {
     private final String name;
 
-    public Channel(String name) {
+    public TextChannel(String name) {
         this.name = name;
     }
 
