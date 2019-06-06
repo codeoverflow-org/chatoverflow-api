@@ -2,7 +2,9 @@ package org.codeoverflow.chatoverflow.api.io.dto.chat.discord;
 
 import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessage;
+import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessageAuthor;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,40 +12,40 @@ import java.util.Optional;
 /**
  * A chat message that was send in a discord channel
  */
-public class DiscordChatMessage extends ChatMessage<DiscordChatMessageAuthor, DiscordChannel, DiscordChatCustomEmoticon> implements Identifiable {
+public class DiscordChatMessage extends ChatMessage<ChatMessageAuthor, DiscordTextChannel, DiscordChatCustomEmoticon> implements Identifiable {
 
     private final String id;
     private final DiscordEmbed embed;
     private final List<String> attachmentUrls;
     private final List<DiscordReaction> reactions;
 
-    public DiscordChatMessage(DiscordChatMessageAuthor author, String message, Long timestamp, DiscordChannel channel, String id) {
-        super(author, message, timestamp, channel);
+    public DiscordChatMessage(ChatMessageAuthor author, String message, OffsetDateTime time, DiscordTextChannel channel, String id) {
+        super(author, message, time, channel);
         this.id = id;
         this.embed = null;
         this.attachmentUrls = new ArrayList<>();
         reactions = new ArrayList<>();
     }
 
-    public DiscordChatMessage(DiscordChatMessageAuthor author,
+    public DiscordChatMessage(ChatMessageAuthor author,
                               String message,
-                              Long timestamp,
-                              DiscordChannel channel,
+                              OffsetDateTime time,
+                              DiscordTextChannel channel,
                               List<DiscordChatCustomEmoticon> emoticons,
                               String id) {
-        this(author, message, timestamp, channel, emoticons, null, new ArrayList<>(), new ArrayList<>(), id);
+        this(author, message, time, channel, emoticons, null, new ArrayList<>(), new ArrayList<>(), id);
     }
 
-    public DiscordChatMessage(DiscordChatMessageAuthor author,
+    public DiscordChatMessage(ChatMessageAuthor author,
                               String message,
-                              Long timestamp,
-                              DiscordChannel channel,
+                              OffsetDateTime time,
+                              DiscordTextChannel channel,
                               List<DiscordChatCustomEmoticon> emoticons,
                               DiscordEmbed embed,
                               List<String> attachmentUrls,
                               List<DiscordReaction> reactions,
                               String id) {
-        super(author, message, timestamp, channel, emoticons);
+        super(author, message, time, channel, emoticons);
         this.id = id;
         this.reactions = reactions;
         this.embed = embed;

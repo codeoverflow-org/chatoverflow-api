@@ -1,24 +1,24 @@
 package org.codeoverflow.chatoverflow.api.io.dto.chat.discord;
 
 import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
-import org.codeoverflow.chatoverflow.api.io.dto.chat.Channel;
+import org.codeoverflow.chatoverflow.api.io.dto.chat.TextChannel;
 
 /**
  * A discord text channel where messages are exchanged
  */
-public class DiscordChannel extends Channel implements Identifiable {
+public class DiscordTextChannel extends TextChannel implements Identifiable {
 
     private final String id;
 
     private final String topic;
 
-    public DiscordChannel(String name, String id, String topic) {
+    public DiscordTextChannel(String name, String id, String topic) {
         super(name);
         this.id = id;
         this.topic = topic;
     }
 
-    public DiscordChannel(String name, String id) {
+    public DiscordTextChannel(String name, String id) {
         super(name);
         this.id = id;
         this.topic = "";

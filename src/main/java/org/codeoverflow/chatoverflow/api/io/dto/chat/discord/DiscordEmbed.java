@@ -1,6 +1,7 @@
 package org.codeoverflow.chatoverflow.api.io.dto.chat.discord;
 
 import java.awt.Color;
+import java.time.OffsetDateTime;
 import java.util.*;
 
 /**
@@ -20,7 +21,7 @@ public class DiscordEmbed {
     private final String description;
     private final String url;
     private final String color;
-    private final long timestamp;
+    private final OffsetDateTime time;
     private final String footerIconUrl;
     private final String footerText;
     private final String thumbnailUrl;
@@ -33,7 +34,7 @@ public class DiscordEmbed {
     public DiscordEmbed(String title,
                         String description,
                         String url, String color,
-                        long timestamp,
+                        OffsetDateTime time,
                         String footerIconUrl,
                         String footerText,
                         String thumbnailUrl,
@@ -46,7 +47,7 @@ public class DiscordEmbed {
         this.description = description;
         this.url = url;
         this.color = color;
-        this.timestamp = timestamp;
+        this.time = time;
         this.footerIconUrl = footerIconUrl;
         this.footerText = footerText;
         this.thumbnailUrl = thumbnailUrl;
@@ -95,12 +96,12 @@ public class DiscordEmbed {
     }
 
     /**
-     * Returns the timestamp of the embed (value in epoch millis)
+     * Returns the time of the embed (value in epoch millis)
      *
-     * @return optional container with the timestamp of the embed or an empty optional if there was none provided
+     * @return optional container with the time of the embed or an empty optional if there was none provided
      */
-    public OptionalLong getTimestamp() {
-        return timestamp < 0 ? OptionalLong.empty() : OptionalLong.of(timestamp);
+    public Optional<OffsetDateTime> getTime() {
+        return Optional.ofNullable(time);
     }
 
     /**
@@ -257,7 +258,7 @@ public class DiscordEmbed {
         private StringBuilder description = null;
         private String url = null;
         private String color = null;
-        private Long timestamp = Long.MIN_VALUE;
+        private OffsetDateTime time = null;
         private String footerIconUrl = null;
         private String footerText = null;
         private String thumbnailUrl = null;
@@ -343,17 +344,17 @@ public class DiscordEmbed {
         }
 
         /**
-         * Sets the timestamp of the embed.<br>
-         * If this is not set, the timestamp will not appear in the embed.
+         * Sets the time of the embed.<br>
+         * If this is not set, the time will not appear in the embed.
          * <p>
          * <b>Tip:</b><br>
-         * Get the current time with {@link Calendar#getTimeInMillis()}
+         * Get the current time with {@link OffsetDateTime#now()}
          *
-         * @param timestamp the timestamp of the embed (value in epoch millis)
-         * @return the builder after the timestamp has been set
+         * @param time the time of the embed (value in epoch millis)
+         * @return the builder after the time has been set
          */
-        public Builder withTimestamp(Long timestamp) {
-            this.timestamp = timestamp;
+        public Builder withTimestamp(OffsetDateTime time) {
+            this.time = time;
             return this;
         }
 
@@ -470,7 +471,7 @@ public class DiscordEmbed {
                     description.toString(),
                     url,
                     color,
-                    timestamp,
+                    time,
                     footerIconUrl,
                     footerText,
                     thumbnailUrl,

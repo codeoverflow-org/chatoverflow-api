@@ -3,22 +3,24 @@ package org.codeoverflow.chatoverflow.api.io.dto.purchase.twitch;
 import org.codeoverflow.chatoverflow.api.io.dto.User;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.twitch.TwitchChatMessage;
 
+import java.time.OffsetDateTime;
+
 public class TwitchCommerce {
     private final User user;
     private final String channelID;
     private final String channelName;
-    private final Long timestamp;
+    private final OffsetDateTime time;
     private final String imageURL;
     private final String description;
     private final boolean supportsChannel;
     private final TwitchChatMessage purchaseMessage;
 
-    public TwitchCommerce(User user, String channelID, String channelName, Long timestamp, String imageURL,
+    public TwitchCommerce(User user, String channelID, String channelName, OffsetDateTime time, String imageURL,
                           String description, boolean supportsChannel, TwitchChatMessage purchaseMessage) {
         this.user = user;
         this.channelID = channelID;
         this.channelName = channelName;
-        this.timestamp = timestamp;
+        this.time = time;
         this.imageURL = imageURL;
         this.description = description;
         this.supportsChannel = supportsChannel;
@@ -47,10 +49,10 @@ public class TwitchCommerce {
     }
 
     /**
-     * @return timestamp of the purchase
+     * @return time of the purchase
      */
-    public Long getTimestamp() {
-        return timestamp;
+    public OffsetDateTime getTime() {
+        return time;
     }
 
     public String getImageURL() {

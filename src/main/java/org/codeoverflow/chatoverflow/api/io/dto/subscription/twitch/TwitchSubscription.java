@@ -4,6 +4,8 @@ package org.codeoverflow.chatoverflow.api.io.dto.subscription.twitch;
 import org.codeoverflow.chatoverflow.api.io.dto.User;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.twitch.TwitchChatMessage;
 
+import java.time.OffsetDateTime;
+
 public class TwitchSubscription {
     enum SubscriptionContext {
         SUB, RESUB, SUBGIFT, SUBGIFT_ANONYM, UNKNOWN
@@ -12,7 +14,7 @@ public class TwitchSubscription {
     private final User subscriber;
     private final String channelName;
     private final String channelID;
-    private final Long timestamp;
+    private final OffsetDateTime time;
     private final TwitchSubscriptionPlan subPlan;
     private final int months;
     private final SubscriptionContext context;
@@ -23,10 +25,10 @@ public class TwitchSubscription {
      * @param subPlan valid parameters: "Prime", "1000", "2000", "3000"
      * @param subContext valid parameters: "sub", "resub", "subgift", "anonsubgift"
      */
-    public TwitchSubscription(User subscriber, String channelName, String channelID, Long timestamp,
+    public TwitchSubscription(User subscriber, String channelName, String channelID, OffsetDateTime time,
                               String subPlan, String subPlanName, int months, String subContext,
                               TwitchChatMessage subMessage) {
-        this(subscriber, channelName, channelID, timestamp, subPlan, subPlanName, months, subContext,
+        this(subscriber, channelName, channelID, time, subPlan, subPlanName, months, subContext,
                 subMessage, null);
     }
 
@@ -34,26 +36,26 @@ public class TwitchSubscription {
      * @param subPlan valid parameters: "Prime", "1000", "2000", "3000"
      * @param subContext valid parameters: "sub", "resub", "subgift", "anonsubgift"
      */
-    public TwitchSubscription(User subscriber, String channelName, String channelID, Long timestamp,
+    public TwitchSubscription(User subscriber, String channelName, String channelID, OffsetDateTime time,
                               String subPlan, String subPlanName, int months, String subContext,
                               TwitchChatMessage subMessage, User subDonor) {
-        this(subscriber, channelName, channelID, timestamp, new TwitchSubscriptionPlan(subPlan, subPlanName,
+        this(subscriber, channelName, channelID, time, new TwitchSubscriptionPlan(subPlan, subPlanName,
                 channelID, channelName), months, convertTo(subContext), subMessage, subDonor);
     }
 
-    public TwitchSubscription(User subscriber, String channelName, String channelID, Long timestamp,
+    public TwitchSubscription(User subscriber, String channelName, String channelID, OffsetDateTime time,
                               TwitchSubscriptionPlan subPlan, int months, SubscriptionContext context,
                               TwitchChatMessage subMessage) {
-        this(subscriber, channelName, channelID, timestamp, subPlan, months, context, subMessage, null);
+        this(subscriber, channelName, channelID, time, subPlan, months, context, subMessage, null);
     }
 
-    public TwitchSubscription(User subscriber, String channelName, String channelID, Long timestamp,
+    public TwitchSubscription(User subscriber, String channelName, String channelID, OffsetDateTime time,
                               TwitchSubscriptionPlan subPlan, int months, SubscriptionContext context,
                               TwitchChatMessage subMessage, User subDonor) {
         this.subscriber = subscriber;
         this.channelName = channelName;
         this.channelID = channelID;
-        this.timestamp = timestamp;
+        this.time = time;
         this.subPlan = subPlan;
         this.months = months;
         this.context = context;
@@ -85,8 +87,8 @@ public class TwitchSubscription {
     /**
      * @return time of the subscription
      */
-    public Long getTimestamp() {
-        return timestamp;
+    public OffsetDateTime getTime() {
+        return time;
     }
 
     /**

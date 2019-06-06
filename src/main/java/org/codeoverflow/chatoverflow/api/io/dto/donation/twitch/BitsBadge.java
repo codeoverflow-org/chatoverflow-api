@@ -2,21 +2,23 @@ package org.codeoverflow.chatoverflow.api.io.dto.donation.twitch;
 
 import org.codeoverflow.chatoverflow.api.io.dto.User;
 
+import java.time.OffsetDateTime;
+
 public class BitsBadge {
     private final String channelID;
     private final String channelName;
     private final String chatMessage;
     private final User user;
     private final int tier;
-    private final Long timestamp;
+    private final OffsetDateTime time;
 
-    public BitsBadge(String channelID, String channelName, String chatMessage, User user, int tier, Long timestamp) {
+    public BitsBadge(String channelID, String channelName, String chatMessage, User user, int tier, OffsetDateTime time) {
         this.channelID = channelID;
         this.channelName = channelName;
         this.chatMessage = chatMessage;
         this.user = user;
         this.tier = tier;
-        this.timestamp = timestamp;
+        this.time = time;
     }
 
     /**
@@ -57,7 +59,7 @@ public class BitsBadge {
     /**
      * @return time when the bits badge was earned
      */
-    public Long getTimestamp() {
-        return timestamp;
+    public OffsetDateTime getTime() {
+        return time;
     }
 }

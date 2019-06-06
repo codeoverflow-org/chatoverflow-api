@@ -2,15 +2,17 @@ package org.codeoverflow.chatoverflow.api.io.dto.follow;
 
 import org.codeoverflow.chatoverflow.api.io.dto.User;
 
+import java.time.OffsetDateTime;
+
 public class Follow {
     private final User follower;
     private final User followed;
-    private final Long timestamp;
+    private final OffsetDateTime time;
 
-    public Follow(User follower, User followed, Long timestamp) {
+    public Follow(User follower, User followed, OffsetDateTime time) {
         this.follower = follower;
         this.followed = followed;
-        this.timestamp = timestamp;
+        this.time = time;
     }
 
     /**
@@ -30,7 +32,7 @@ public class Follow {
     /**
      * @return time of the following
      */
-    public Long getTimestamp() {
-        return timestamp;
+    public OffsetDateTime getTime() {
+        return time;
     }
 }
