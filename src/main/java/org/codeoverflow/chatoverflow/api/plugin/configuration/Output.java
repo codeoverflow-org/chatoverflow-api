@@ -1,5 +1,6 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+import org.codeoverflow.chatoverflow.api.io.output.FileOutput;
 import org.codeoverflow.chatoverflow.api.io.output.SerialOutput;
 import org.codeoverflow.chatoverflow.api.io.output.chat.DiscordChatOutput;
 import org.codeoverflow.chatoverflow.api.io.output.chat.TwitchChatOutput;
@@ -49,6 +50,16 @@ public class Output {
      */
     public Requirement<SerialOutput> serial(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, SerialOutput.class);
+    }
+
+    /**
+     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
+     * @param displayName Is displayed to the framework user and to tell him what to enter
+     * @param isOptional true if this requirement is optional, false if mandatory
+     * @return the requirement object
+     */
+    public Requirement<FileOutput> file(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, FileOutput.class);
     }
 
     // Add more outputs here
