@@ -8,7 +8,7 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.ChatMessageAuthor;
  */
 public class DiscordChatMessageAuthor extends ChatMessageAuthor implements Identifiable {
 
-    private String id;
+    private final String id;
 
     public DiscordChatMessageAuthor(String displayName, String id) {
         super(displayName);
@@ -17,10 +17,6 @@ public class DiscordChatMessageAuthor extends ChatMessageAuthor implements Ident
 
     public DiscordChatMessageAuthor(String displayName, String id, String color) {
         super(displayName, color);
-        this.id = id;
-    }
-
-    public void setId(String id) {
         this.id = id;
     }
 
