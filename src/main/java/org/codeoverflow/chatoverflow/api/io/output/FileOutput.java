@@ -14,4 +14,6 @@ public interface FileOutput extends Output {
 
     boolean exists(String pathInResources);
 
+    boolean delete(String pathInResources);
+
 }
