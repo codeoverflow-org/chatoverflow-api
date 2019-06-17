@@ -4,7 +4,6 @@ import org.codeoverflow.chatoverflow.api.io.dto.chat.Channel;
 import org.codeoverflow.chatoverflow.api.io.dto.Identifiable;
 
 /**
- * TODO Find out for what this is used skateKappa
  * The representation of channel of a twitch streamer
  */
 public class TwitchChannel extends Channel implements Identifiable {
@@ -72,7 +71,6 @@ public class TwitchChannel extends Channel implements Identifiable {
     }
 
     /**
-     * TODO Is this a timestamp or a formatted string?
      *
      * @return when the stream was created
      */
