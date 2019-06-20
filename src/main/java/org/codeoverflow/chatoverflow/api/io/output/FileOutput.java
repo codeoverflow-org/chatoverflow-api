@@ -12,4 +12,8 @@ public interface FileOutput extends Output {
 
     boolean createDirectory(String folderName);
 
+    boolean exists(String pathInResources);
+
+    boolean delete(String pathInResources);
+
 }
