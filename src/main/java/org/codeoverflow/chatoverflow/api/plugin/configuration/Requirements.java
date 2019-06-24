@@ -81,15 +81,16 @@ public class Requirements {
      * Unsets the value of a requirement specified by the unique id.
      *
      * @param uniqueRequirementId the plugin unique requirement id
-     * @return true, if a requirement with the given id exists
+     * @return true, if the requirement exists and previously had a value
      */
     public boolean unsetRequirementById(String uniqueRequirementId) {
         Optional<? extends Requirement<? extends Serializable>> requirement =
                 getAllEntries().filter(entry -> entry.getKey().equals(uniqueRequirementId))
                         .map(Map.Entry::getValue).findFirst();
 
+        boolean wasSet = requirement.isPresent() && requirement.get().isSet();
         requirement.ifPresent(Requirement::unsetValue);
-        return requirement.isPresent();
+        return wasSet;
     }
 
     /**
