@@ -65,10 +65,31 @@ public class Requirements {
         return requirement;
     }
 
+    /**
+     * Returns a requirement of any type (input / output / parameter) with the given unique id.
+     *
+     * @param uniqueRequirementId the plugin unique requirement id
+     * @return an optional encapsulating the requirement or none
+     */
     public Optional<? extends Requirement<? extends Serializable>> getRequirementById(String uniqueRequirementId) {
         return getAllEntries()
                 .filter(entry -> entry.getKey().equals(uniqueRequirementId))
                 .map(Map.Entry::getValue).findFirst();
+    }
+
+    /**
+     * Unsets the value of a requirement specified by the unique id.
+     *
+     * @param uniqueRequirementId the plugin unique requirement id
+     * @return true, if a requirement with the given id exists
+     */
+    public boolean unsetRequirementById(String uniqueRequirementId) {
+        Optional<? extends Requirement<? extends Serializable>> requirement =
+                getAllEntries().filter(entry -> entry.getKey().equals(uniqueRequirementId))
+                        .map(Map.Entry::getValue).findFirst();
+
+        requirement.ifPresent(Requirement::unsetValue);
+        return requirement.isPresent();
     }
 
     /**

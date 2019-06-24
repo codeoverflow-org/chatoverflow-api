@@ -71,6 +71,13 @@ public class Requirement<T extends Serializable> {
     }
 
     /**
+     * Unsets the requirement by inserting the value null
+     */
+    void unsetValue() {
+        value = null;
+    }
+
+    /**
      * Returns if the requirement is optional
      *
      * @return true, if the requirement is optional
