@@ -19,6 +19,6 @@ public interface PluginManager {
      *
      * @return a list of log messages
      */
-    List<String> getLogMessages();
+    List<PluginLogMessage> getLogMessages();
 
 }
