@@ -7,4 +7,6 @@ import org.codeoverflow.chatoverflow.api.io.Serializable;
  */
 public interface Input extends Serializable {
     boolean init();
+
+    boolean shutdown();
 }
