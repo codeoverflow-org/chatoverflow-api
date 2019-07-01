@@ -1,6 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input.stat;
 
-import org.codeoverflow.chatoverflow.api.io.dto.stat.User;
+import org.codeoverflow.chatoverflow.api.io.dto.User;
 import org.codeoverflow.chatoverflow.api.io.input.Input;
 
 import java.util.List;
