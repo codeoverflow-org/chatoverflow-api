@@ -1,5 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input;
 
+import org.codeoverflow.chatoverflow.api.io.event.serial.SerialDataAvailableEvent;
 import org.codeoverflow.chatoverflow.api.io.event.serial.SerialEvent;
 import org.codeoverflow.chatoverflow.api.io.input.event.EventInput;
 
@@ -19,4 +20,14 @@ public interface SerialInput extends EventInput<SerialEvent> {
      * @return stream of incoming data
      */
     InputStream getInputStream();
+
+
+    /**
+     * Register an event handler that listens to all {@link SerialDataAvailableEvent}
+     *
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerDataAvailableEventHandler(Consumer<SerialDataAvailableEvent> eventHandler) {
+        registerEventHandler(eventHandler, SerialDataAvailableEvent.class);
+    }
 }
