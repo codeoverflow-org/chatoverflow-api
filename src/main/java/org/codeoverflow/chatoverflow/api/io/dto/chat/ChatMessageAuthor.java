@@ -15,13 +15,13 @@ public class ChatMessageAuthor extends User implements Formatable {
         this.color = color;
     }
 
-    public ChatMessageAuthor(String displayName, String color) {
-        super(displayName);
-        this.color = color;
+    public ChatMessageAuthor(String identifier, String name) {
+        this(identifier, name, "#000000");
     }
 
     public ChatMessageAuthor(String displayName) {
-        this(displayName, "#000000");
+        super(displayName);
+        this.color = "#000000";
     }
 
     /**
