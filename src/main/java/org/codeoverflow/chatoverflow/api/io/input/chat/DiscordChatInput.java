@@ -1,10 +1,11 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
 import org.codeoverflow.chatoverflow.api.io.dto.chat.discord.DiscordChatMessage;
-import org.codeoverflow.chatoverflow.api.io.event.chat.discord.DiscordEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.discord.*;
 
 import java.util.Optional;
 import java.util.concurrent.Future;
+import java.util.function.Consumer;
 
 public interface DiscordChatInput extends ChatInput<DiscordChatMessage, DiscordEvent>, PrivateChatInput<DiscordChatMessage, DiscordEvent> {
 
@@ -38,4 +39,68 @@ public interface DiscordChatInput extends ChatInput<DiscordChatMessage, DiscordE
      * @return future container that returns an optional container with the retrieved message or an empty optional if none found
      */
     Future<Optional<DiscordChatMessage>> retrieveMessage(String messageId);
+
+    /**
+     * Register an event handler that listens to all {@link DiscordChatMessageDeleteEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerChatMessageDeleteEventHandler(Consumer<DiscordChatMessageDeleteEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageDeleteEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordChatMessageEditEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerChatMessageEditEventHandler(Consumer<DiscordChatMessageEditEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageEditEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordChatMessageSendEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerChatMessageSendEventHandler(Consumer<DiscordChatMessageSendEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageSendEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageDeleteEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerPrivateChatMessageDeleteEventHandler(Consumer<DiscordPrivateChatMessageDeleteEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageDeleteEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageEditEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerPrivateChatMessageEditEventHandler(Consumer<DiscordPrivateChatMessageEditEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageEditEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageSendEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerPrivateChatMessageSendEventHandler(Consumer<DiscordPrivateChatMessageSendEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageSendEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordReactionAddEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerReactionAddEventHandler(Consumer<DiscordReactionAddEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordReactionAddEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordReactionRemoveEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerReactionRemoveEventHandler(Consumer<DiscordReactionRemoveEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordReactionRemoveEvent.class);
+    }
 }
