@@ -29,7 +29,7 @@ public class User implements Identifiable {
     /**
      * @return users display name
      */
-    public String getName() {
+    public String getDisplayName() {
         return name;
     }
 }

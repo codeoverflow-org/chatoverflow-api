@@ -35,7 +35,7 @@ public class ChatMessageAuthor extends User implements Formatable {
      * @return The display name as raw string
      */
     public String toString() {
-        return getName();
+        return getDisplayName();
     }
 
     /**
@@ -43,7 +43,7 @@ public class ChatMessageAuthor extends User implements Formatable {
      */
     @Override
     public String toHTMLString() {
-        return "<span color=\"" + color + "\"><b>" + getName() + "</b></span>";
+        return "<span color=\"" + color + "\"><b>" + getDisplayName() + "</b></span>";
     }
 
     /**
@@ -51,6 +51,6 @@ public class ChatMessageAuthor extends User implements Formatable {
      */
     @Override
     public String toMarkdownString() {
-        return "**" + getName() + "**";
+        return "**" + getDisplayName() + "**";
     }
 }
