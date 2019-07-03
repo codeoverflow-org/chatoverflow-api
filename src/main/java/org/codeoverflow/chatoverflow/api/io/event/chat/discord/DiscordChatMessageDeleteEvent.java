@@ -9,9 +9,9 @@ import java.time.OffsetDateTime;
 /**
  * Event that is triggered when a user deletes a message in a discord channel
  */
-public class DiscordChatMessageDeleteEvent extends ChatMessageDeleteEvent<DiscordChatMessage> {
+public class DiscordChatMessageDeleteEvent extends ChatMessageDeleteEvent<DiscordChatMessage> implements DiscordEvent {
 
-    public DiscordChatMessageDeleteEvent(DiscordChatMessage message, OffsetDateTime time) {
-        super(message, time);
+    public DiscordChatMessageDeleteEvent(DiscordChatMessage message) {
+        super(message);
     }
 }

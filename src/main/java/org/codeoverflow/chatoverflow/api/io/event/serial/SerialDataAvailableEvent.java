@@ -5,7 +5,7 @@ import org.codeoverflow.chatoverflow.api.io.event.Event;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public class SerialDataAvailableEvent extends Event {
+public class SerialDataAvailableEvent implements SerialEvent {
 
     private final byte[] data;
 

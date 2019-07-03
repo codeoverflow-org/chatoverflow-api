@@ -15,10 +15,19 @@ public class TwitchUserStats extends User {
         this.view_count = view_count;
     }
 
+    /**
+     * Get tha channel description from this twitch user
+     *
+     * @return the channel description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProfile_image_url() {
         return profile_image_url;
     }

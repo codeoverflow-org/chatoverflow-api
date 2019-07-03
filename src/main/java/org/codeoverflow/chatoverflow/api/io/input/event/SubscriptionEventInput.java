@@ -1,4 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input.event;
 
-public interface SubscriptionEventInput extends EventInput {
+import org.codeoverflow.chatoverflow.api.io.event.Event;
+
+public interface SubscriptionEventInput<T extends Event> extends EventInput<T> {
 }

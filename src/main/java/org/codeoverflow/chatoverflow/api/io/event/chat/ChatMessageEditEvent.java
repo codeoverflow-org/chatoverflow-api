@@ -16,11 +16,6 @@ public abstract class ChatMessageEditEvent<T extends ChatMessage> extends ChatMe
         this.oldMessage = oldMessage;
     }
 
-    public ChatMessageEditEvent(T newMessage, T oldMessage, OffsetDateTime time) {
-        super(newMessage, time);
-        this.oldMessage = oldMessage;
-    }
-
     /**
      * @return the message as it was before it was edited
      */

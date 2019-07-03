@@ -8,16 +8,11 @@ import java.time.OffsetDateTime;
 /**
  * An event that involved a {@link ChatMessage}
  */
-public abstract class ChatMessageEvent<T extends ChatMessage> extends Event {
+public abstract class ChatMessageEvent<T extends ChatMessage> implements Event {
     private final T message;
 
     public ChatMessageEvent(T message) {
         super();
-        this.message = message;
-    }
-
-    public ChatMessageEvent(T message, OffsetDateTime time) {
-        super(time);
         this.message = message;
     }
 

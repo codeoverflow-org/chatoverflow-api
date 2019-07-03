@@ -8,13 +8,9 @@ import java.time.OffsetDateTime;
 /**
  * Event that is triggered when a reaction is removed from a discord message
  */
-public class DiscordReactionRemoveEvent extends DiscordReactionEvent {
+public class DiscordReactionRemoveEvent extends DiscordReactionEvent implements DiscordEvent {
 
     public DiscordReactionRemoveEvent(DiscordChatMessage message, DiscordReaction reaction) {
         super(message, reaction);
-    }
-
-    public DiscordReactionRemoveEvent(DiscordChatMessage message, DiscordReaction reaction, OffsetDateTime time) {
-        super(message, reaction, time);
     }
 }

@@ -12,8 +12,4 @@ public abstract class ChatMessageSendEvent<T extends ChatMessage> extends ChatMe
     public ChatMessageSendEvent(T message) {
         super(message);
     }
-
-    public ChatMessageSendEvent(T message, OffsetDateTime time) {
-        super(message, time);
-    }
 }

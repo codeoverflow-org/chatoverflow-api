@@ -9,10 +9,10 @@ import java.time.OffsetDateTime;
 /**
  * Event that is triggered when a user edits a private message on discord
  */
-public class DiscordPrivateChatMessageEditEvent extends ChatMessageEditEvent<DiscordChatMessage> {
+public class DiscordPrivateChatMessageEditEvent extends ChatMessageEditEvent<DiscordChatMessage> implements DiscordEvent {
 
-    public DiscordPrivateChatMessageEditEvent(DiscordChatMessage newMessage, DiscordChatMessage oldMessage, OffsetDateTime time) {
-        super(newMessage, oldMessage, time);
+    public DiscordPrivateChatMessageEditEvent(DiscordChatMessage newMessage, DiscordChatMessage oldMessage) {
+        super(newMessage, oldMessage);
     }
 
 }

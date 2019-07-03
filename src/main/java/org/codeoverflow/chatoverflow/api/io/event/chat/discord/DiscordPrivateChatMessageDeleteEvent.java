@@ -7,9 +7,9 @@ import org.codeoverflow.chatoverflow.api.io.event.chat.ChatMessageSendEvent;
 /**
  * Event that is triggered when a user deletes a private message on discord
  */
-public class DiscordPrivateChatMessageDeleteEvent extends ChatMessageSendEvent<DiscordChatMessage> {
+public class DiscordPrivateChatMessageDeleteEvent extends ChatMessageSendEvent<DiscordChatMessage> implements DiscordEvent {
 
     public DiscordPrivateChatMessageDeleteEvent(DiscordChatMessage message) {
-        super(message, message.getTime());
+        super(message);
     }
 }

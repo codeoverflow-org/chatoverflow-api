@@ -11,5 +11,5 @@ public interface StatInput<T extends User> extends Input {
 
     String getSubscribers(String userName);
 
-    List<User> getFollowers(String userID);
+    List<T> getFollowers(String userID);
 }

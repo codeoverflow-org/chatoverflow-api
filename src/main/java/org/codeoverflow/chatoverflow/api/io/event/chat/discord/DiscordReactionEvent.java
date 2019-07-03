@@ -9,16 +9,11 @@ import java.time.OffsetDateTime;
 /**
  * An event that involved a reaction to a discord message
  */
-public abstract class DiscordReactionEvent extends ChatMessageEvent<DiscordChatMessage> {
+public abstract class DiscordReactionEvent extends ChatMessageEvent<DiscordChatMessage> implements DiscordEvent {
     private final DiscordReaction reaction;
 
     public DiscordReactionEvent(DiscordChatMessage message, DiscordReaction reaction) {
-        super(message, OffsetDateTime.now());
-        this.reaction = reaction;
-    }
-
-    public DiscordReactionEvent(DiscordChatMessage message, DiscordReaction reaction, OffsetDateTime time) {
-        super(message, time);
+        super(message);
         this.reaction = reaction;
     }
 
