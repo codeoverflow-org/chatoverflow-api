@@ -57,11 +57,11 @@ public interface DiscordChatInput extends ChatInput<DiscordChatMessage, DiscordE
     }
 
     /**
-     * Register an event handler that listens to all {@link DiscordChatMessageSendEvent}
+     * Register an event handler that listens to all {@link DiscordChatMessageReceiveEvent}
      * @param eventHandler consumer that receives the Events
      */
-    default void registerChatMessageSendEventHandler(Consumer<DiscordChatMessageSendEvent> eventHandler) {
-        registerEventHandler(eventHandler, DiscordChatMessageSendEvent.class);
+    default void registerChatMessageReceiveEventHandler(Consumer<DiscordChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageReceiveEvent.class);
     }
 
     /**
@@ -81,11 +81,11 @@ public interface DiscordChatInput extends ChatInput<DiscordChatMessage, DiscordE
     }
 
     /**
-     * Register an event handler that listens to all {@link DiscordPrivateChatMessageSendEvent}
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageReceiveEvent}
      * @param eventHandler consumer that receives the Events
      */
-    default void registerPrivateChatMessageSendEventHandler(Consumer<DiscordPrivateChatMessageSendEvent> eventHandler) {
-        registerEventHandler(eventHandler, DiscordPrivateChatMessageSendEvent.class);
+    default void registerPrivateChatMessageReceiveEventHandler(Consumer<DiscordPrivateChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageReceiveEvent.class);
     }
 
     /**

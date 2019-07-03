@@ -2,10 +2,10 @@ package org.codeoverflow.chatoverflow.api.io.input.chat;
 
 
 import org.codeoverflow.chatoverflow.api.io.dto.chat.twitch.TwitchChatMessage;
-import org.codeoverflow.chatoverflow.api.io.event.chat.mockup.MockupPrivateChatMessageSendEvent;
-import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchChatMessageSendEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.mockup.MockupPrivateChatMessageReceiveEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchChatMessageReceiveEvent;
 import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchEvent;
-import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchPrivateChatMessageSendEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchPrivateChatMessageReceiveEvent;
 import org.codeoverflow.chatoverflow.api.io.input.chat.ChatInput;
 
 import java.util.function.Consumer;
@@ -26,18 +26,18 @@ public interface TwitchChatInput extends ChatInput<TwitchChatMessage, TwitchEven
     void setChannel(String channel);
 
     /**
-     * Register an event handler that listens to all {@link TwitchChatMessageSendEvent}
+     * Register an event handler that listens to all {@link TwitchChatMessageReceiveEvent}
      * @param eventHandler consumer that receives the Events
      */
-    default void registerChatMessageSendEventHandler(Consumer<TwitchChatMessageSendEvent> eventHandler) {
-        registerEventHandler(eventHandler, TwitchChatMessageSendEvent.class);
+    default void registerChatMessageReceiveEventHandler(Consumer<TwitchChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, TwitchChatMessageReceiveEvent.class);
     }
 
     /**
-     * Register an event handler that listens to all {@link TwitchPrivateChatMessageSendEvent}
+     * Register an event handler that listens to all {@link TwitchPrivateChatMessageReceiveEvent}
      * @param eventHandler consumer that receives the Events
      */
-    default void registerPrivateChatMessageSendEventHandler(Consumer<TwitchPrivateChatMessageSendEvent> eventHandler) {
-        registerEventHandler(eventHandler, TwitchPrivateChatMessageSendEvent.class);
+    default void registerPrivateChatMessageReceiveEventHandler(Consumer<TwitchPrivateChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, TwitchPrivateChatMessageReceiveEvent.class);
     }
 }

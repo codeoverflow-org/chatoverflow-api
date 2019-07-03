@@ -7,9 +7,9 @@ import java.time.OffsetDateTime;
 /**
  * An event that indicates the creation of a chat message
  */
-public abstract class ChatMessageSendEvent<T extends ChatMessage> extends ChatMessageEvent<T> {
+public abstract class ChatMessageReceiveEvent<T extends ChatMessage> extends ChatMessageEvent<T> {
 
-    public ChatMessageSendEvent(T message) {
+    public ChatMessageReceiveEvent(T message) {
         super(message);
     }
 }
