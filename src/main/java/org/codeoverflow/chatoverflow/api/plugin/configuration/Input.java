@@ -1,11 +1,12 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+import org.codeoverflow.chatoverflow.api.io.input.FileInput;
 import org.codeoverflow.chatoverflow.api.io.input.SampleInput;
 import org.codeoverflow.chatoverflow.api.io.input.SerialInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.DiscordChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.MockUpChatInput;
+import org.codeoverflow.chatoverflow.api.io.input.event.TipeeestreamEventInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.TwitchChatInput;
-import org.codeoverflow.chatoverflow.api.io.input.stat.TwitchStatInput;
 
 /**
  * Syntactic sugar for the plugin developer that provides all input requirements for him
@@ -86,8 +87,8 @@ public class Input {
      * @param isOptional true if this requirement is optional, false if mandatory
      * @return the requirement object
      */
-    public Requirement<TipeeeStreamInput> tipeeeStream(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TipeeeStreamInput.class);
+    public Requirement<TipeeestreamEventInput> tipeeeStream(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TipeeestreamEventInput.class);
     }
 
     /**
