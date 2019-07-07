@@ -3,7 +3,7 @@ name := "chatoverflow-api"
 lazy val sourceGenerator = TaskKey[Unit]("sourceGenerator")
 
 // Convention: majorVersion++ on api signature update (else: minorVersion ++)
-val majorVersion = 2
+val majorVersion = 3
 val minorVersion = 0
 version := s"$majorVersion.$minorVersion"
 
