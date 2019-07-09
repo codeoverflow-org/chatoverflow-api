@@ -1,5 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input.event;
 
+import org.codeoverflow.chatoverflow.api.IsRequirement;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestramFollowEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamDonationEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamEvent;
@@ -7,6 +8,7 @@ import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.Tipeeestre
 
 import java.util.function.Consumer;
 
+@IsRequirement(requires = "login for the TipeeeStream api")
 public interface TipeeestreamEventInput extends EventInput<TipeeestreamEvent> {
 
     /**

@@ -1,5 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input;
 
+import org.codeoverflow.chatoverflow.api.IsRequirement;
 import org.codeoverflow.chatoverflow.api.io.event.serial.SerialDataAvailableEvent;
 import org.codeoverflow.chatoverflow.api.io.event.serial.SerialEvent;
 import org.codeoverflow.chatoverflow.api.io.input.event.EventInput;
@@ -11,6 +12,7 @@ import java.util.function.Consumer;
  * Connects to a device that is connected to your pc through a serial port (an Arduino for example)
  * to receive data
  */
+@IsRequirement(requires = "connection with a device connected to a serial port (an Arduino for example)")
 public interface SerialInput extends EventInput<SerialEvent> {
 
     /**
