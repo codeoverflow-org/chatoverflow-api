@@ -1,6 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input.event;
 
-import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestramFollowEvent;
+import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamFollowEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamDonationEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamSubscriptionEvent;
@@ -19,12 +19,12 @@ public interface TipeeestreamEventInput extends EventInput<TipeeestreamEvent> {
     }
 
     /**
-     * Register an event handler that listens to all {@link TipeeestramFollowEvent}
+     * Register an event handler that listens to all {@link TipeeestreamFollowEvent}
      *
      * @param eventHandler consumer that receives the Events
      */
-    default void registerFollowEventHandler(Consumer<TipeeestramFollowEvent> eventHandler) {
-        registerEventHandler(eventHandler, TipeeestramFollowEvent.class);
+    default void registerFollowEventHandler(Consumer<TipeeestreamFollowEvent> eventHandler) {
+        registerEventHandler(eventHandler, TipeeestreamFollowEvent.class);
     }
 
     /**
