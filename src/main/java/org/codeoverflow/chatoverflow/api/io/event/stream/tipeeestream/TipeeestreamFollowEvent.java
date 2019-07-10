@@ -6,8 +6,8 @@ import org.codeoverflow.chatoverflow.api.io.event.stream.FollowEvent;
 /**
  * Event that is triggered by tipeeestream if a user follows your channel
  */
-public class TipeeestramFollowEvent extends FollowEvent<TipeeestreamFollow> implements TipeeestreamEvent {
-    public TipeeestramFollowEvent(TipeeestreamFollow info) {
+public class TipeeestreamFollowEvent extends FollowEvent<TipeeestreamFollow> implements TipeeestreamEvent {
+    public TipeeestreamFollowEvent(TipeeestreamFollow info) {
         super(info);
     }
 }
