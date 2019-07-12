@@ -17,7 +17,7 @@ version := s"$majorVersion.$minorVersion"
 apiVersionGenerator := APIUtility(streams.value.log)
   .generateAPIVersionFile(sourceDirectory.value, majorVersion, minorVersion)
 
-requirementsGenerator := APIUtility(streams.value.log).generatedRequirements()
+requirementsGenerator := APIUtility(streams.value.log).generatedRequirements(sourceDirectory.value)
 
 
 // Update the compile process to generate the api version java class
