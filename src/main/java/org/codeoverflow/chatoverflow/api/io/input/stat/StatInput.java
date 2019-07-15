@@ -1,14 +1,11 @@
 package org.codeoverflow.chatoverflow.api.io.input.stat;
 
-import org.codeoverflow.chatoverflow.api.io.dto.stat.User;
+import org.codeoverflow.chatoverflow.api.io.dto.stat.UserStats;
 import org.codeoverflow.chatoverflow.api.io.input.Input;
 
-import java.util.List;
+public interface StatInput<T extends UserStats> extends Input {
 
-public interface StatInput extends Input {
-    User getUser(String userName);
+    T getStatsById(String userId);
 
-    String getSubscribers(String userName);
-
-    List<User> getFollowers(String userID);
+    T getStatsByName(String userName);
 }

@@ -2,7 +2,13 @@ package org.codeoverflow.chatoverflow.api.io.input.chat;
 
 
 import org.codeoverflow.chatoverflow.api.io.dto.chat.twitch.TwitchChatMessage;
+import org.codeoverflow.chatoverflow.api.io.event.chat.mockup.MockupPrivateChatMessageReceiveEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchChatMessageReceiveEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchEvent;
+import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchPrivateChatMessageReceiveEvent;
 import org.codeoverflow.chatoverflow.api.io.input.chat.ChatInput;
+
+import java.util.function.Consumer;
 
 /**
  * Input connecting to the Twitch Internet Relay Chat, allows public and private channels
@@ -10,7 +16,7 @@ import org.codeoverflow.chatoverflow.api.io.input.chat.ChatInput;
  * <b>Important notice:</b><br>
  * <b>Call {@link #setChannel(String)} to bind this input to a channel before performing any other action</b>}
  */
-public interface TwitchChatInput extends ChatInput<TwitchChatMessage>, PrivateChatInput<TwitchChatMessage> {
+public interface TwitchChatInput extends ChatInput<TwitchChatMessage, TwitchEvent>, PrivateChatInput<TwitchChatMessage, TwitchEvent> {
 
     /**
      * Changes the twitch channel to input from
@@ -19,4 +25,19 @@ public interface TwitchChatInput extends ChatInput<TwitchChatMessage>, PrivateCh
      */
     void setChannel(String channel);
 
+    /**
+     * Register an event handler that listens to all {@link TwitchChatMessageReceiveEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerChatMessageReceiveEventHandler(Consumer<TwitchChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, TwitchChatMessageReceiveEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link TwitchPrivateChatMessageReceiveEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerPrivateChatMessageReceiveEventHandler(Consumer<TwitchPrivateChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, TwitchPrivateChatMessageReceiveEvent.class);
+    }
 }

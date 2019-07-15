@@ -1,14 +1,13 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
 import org.codeoverflow.chatoverflow.api.io.dto.chat.discord.DiscordChatMessage;
-import org.codeoverflow.chatoverflow.api.io.dto.chat.discord.DiscordReaction;
+import org.codeoverflow.chatoverflow.api.io.event.chat.discord.*;
 
 import java.util.Optional;
 import java.util.concurrent.Future;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public interface DiscordChatInput extends ChatInput<DiscordChatMessage>, PrivateChatInput<DiscordChatMessage> {
+public interface DiscordChatInput extends ChatInput<DiscordChatMessage, DiscordEvent>, PrivateChatInput<DiscordChatMessage, DiscordEvent> {
 
     /**
      * Changes the discord text channel to output to
@@ -42,44 +41,66 @@ public interface DiscordChatInput extends ChatInput<DiscordChatMessage>, Private
     Future<Optional<DiscordChatMessage>> retrieveMessage(String messageId);
 
     /**
-     * Let's you register a simple handler to immediately react on edited messages
-     *
-     * @param handler the consumer to handle edited messages, first argument is the old, second the new message
+     * Register an event handler that listens to all {@link DiscordChatMessageDeleteEvent}
+     * @param eventHandler consumer that receives the Events
      */
-    void registerMessageEditHandler(BiConsumer<DiscordChatMessage, DiscordChatMessage> handler);
+    default void registerChatMessageDeleteEventHandler(Consumer<DiscordChatMessageDeleteEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageDeleteEvent.class);
+    }
 
     /**
-     * Let's you register a simple handler to immediately react on edited messages
-     *
-     * @param handler the consumer to handle edited messages, first argument is the old, second the new message
+     * Register an event handler that listens to all {@link DiscordChatMessageEditEvent}
+     * @param eventHandler consumer that receives the Events
      */
-    void registerPrivateMessageEditHandler(BiConsumer<DiscordChatMessage, DiscordChatMessage> handler);
+    default void registerChatMessageEditEventHandler(Consumer<DiscordChatMessageEditEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageEditEvent.class);
+    }
 
     /**
-     * Let's you register a simple handler to immediately react on deleted messages
-     *
-     * @param handler the consumer with the deleted message
+     * Register an event handler that listens to all {@link DiscordChatMessageReceiveEvent}
+     * @param eventHandler consumer that receives the Events
      */
-    void registerMessageDeleteHandler(Consumer<DiscordChatMessage> handler);
+    default void registerChatMessageReceiveEventHandler(Consumer<DiscordChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordChatMessageReceiveEvent.class);
+    }
 
     /**
-     * Let's you register a simple handler to immediately react on deleted messages
-     *
-     * @param handler the consumer with the deleted message
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageDeleteEvent}
+     * @param eventHandler consumer that receives the Events
      */
-    void registerPrivateMessageDeleteHandler(Consumer<DiscordChatMessage> handler);
+    default void registerPrivateChatMessageDeleteEventHandler(Consumer<DiscordPrivateChatMessageDeleteEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageDeleteEvent.class);
+    }
 
     /**
-     * Let's you register a simple handler to immediately react on reactions
-     *
-     * @param handler a biconsumer that receives the reaction as first and the message as second argument
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageEditEvent}
+     * @param eventHandler consumer that receives the Events
      */
-    void registerReactionAddHandler(BiConsumer<DiscordReaction, DiscordChatMessage> handler);
+    default void registerPrivateChatMessageEditEventHandler(Consumer<DiscordPrivateChatMessageEditEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageEditEvent.class);
+    }
 
     /**
-     * Let's you register a simple handler to immediately react on the removal of reactions
-     *
-     * @param handler a biconsumer that receives the deleted reaction as first and the message as second argument
+     * Register an event handler that listens to all {@link DiscordPrivateChatMessageReceiveEvent}
+     * @param eventHandler consumer that receives the Events
      */
-    void registerReactionRemoveHandler(BiConsumer<DiscordReaction, DiscordChatMessage> handler);
+    default void registerPrivateChatMessageReceiveEventHandler(Consumer<DiscordPrivateChatMessageReceiveEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordPrivateChatMessageReceiveEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordReactionAddEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerReactionAddEventHandler(Consumer<DiscordReactionAddEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordReactionAddEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link DiscordReactionRemoveEvent}
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerReactionRemoveEventHandler(Consumer<DiscordReactionRemoveEvent> eventHandler) {
+        registerEventHandler(eventHandler, DiscordReactionRemoveEvent.class);
+    }
 }

@@ -25,7 +25,7 @@ public class TwitchChatMessageAuthor extends ChatMessageAuthor {
     }
 
     public TwitchChatMessageAuthor(String displayName, String color, boolean broadcaster, boolean moderator, boolean subscriber, boolean turbo) {
-        super(displayName, color);
+        super(displayName, displayName, color);
         this.turbo = turbo;
         this.broadcaster = broadcaster;
         this.moderator  = moderator;

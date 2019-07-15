@@ -6,8 +6,8 @@ import org.codeoverflow.chatoverflow.api.io.input.SampleInput;
 import org.codeoverflow.chatoverflow.api.io.input.SerialInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.DiscordChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.MockUpChatInput;
+import org.codeoverflow.chatoverflow.api.io.input.event.TipeeestreamEventInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.TwitchChatInput;
-import org.codeoverflow.chatoverflow.api.io.input.stat.TwitchStatInput;
 
 /**
  * Syntactic sugar for the plugin developer that provides all input requirements for him
@@ -30,18 +30,6 @@ public class Input {
      */
     public Requirement<TwitchChatInput> twitchChat(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TwitchChatInput.class);
-    }
-
-    /**
-     * Requires a login for the twitch stats api that has to be created by the framework user.
-     *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName         Is displayed to the framework user to tell him what to enter
-     * @param isOptional          true if this requirement is optional, false if mandatory
-     * @return the requirement object
-     */
-    public Requirement<TwitchStatInput> twitchStats(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TwitchStatInput.class);
     }
 
     /**
@@ -90,6 +78,18 @@ public class Input {
      */
     public Requirement<SerialInput> serial(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, SerialInput.class);
+    }
+
+    /**
+     * Requires a login for the TipeeeStream api that has to be created by the framework user.
+     *
+     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
+     * @param displayName Is displayed to the framework user and to tell him what to enter
+     * @param isOptional true if this requirement is optional, false if mandatory
+     * @return the requirement object
+     */
+    public Requirement<TipeeestreamEventInput> tipeeeStream(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TipeeestreamEventInput.class);
     }
 
     /**
