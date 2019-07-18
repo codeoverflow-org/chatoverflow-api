@@ -1,15 +1,19 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+// THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
+
 import org.codeoverflow.chatoverflow.api.io.input.FileInput;
 import org.codeoverflow.chatoverflow.api.io.input.SampleInput;
 import org.codeoverflow.chatoverflow.api.io.input.SerialInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.DiscordChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.MockUpChatInput;
-import org.codeoverflow.chatoverflow.api.io.input.event.TipeeestreamEventInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.TwitchChatInput;
+import org.codeoverflow.chatoverflow.api.io.input.event.TipeeestreamEventInput;
+
+// THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
 
 /**
- * Syntactic sugar for the plugin developer that provides all input requirements for him
+ * Select a Input Requirement to get access to the desired platform or values.
  */
 public class Input {
 
@@ -20,87 +24,158 @@ public class Input {
     }
 
     /**
-     *  Requires a twitch chat login that has to be created by the framework user.
+     * Requires a file system access which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
      */
-    public Requirement<TwitchChatInput> twitchChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TwitchChatInput.class);
+    public Requirement<FileInput> file(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, FileInput.class);
     }
 
     /**
-     * Requires a connected mockup chat that has to be submitted by the user.
+     * Requires a file system access which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user and to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
      */
-    public Requirement<MockUpChatInput> mockupChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, MockUpChatInput.class);
+    public Requirement<FileInput> file(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "File", false, FileInput.class);
     }
 
     /**
-     * Demonstration requirement for the sample input, to get a idea how requirements work
+     * Requires a SampleInput which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user and to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
      */
-    public Requirement<SampleInput> sampleInput(String uniqueRequirementId, String displayName, boolean isOptional) {
+    public Requirement<SampleInput> sample(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, SampleInput.class);
     }
 
     /**
-     *  Requires a discord chat bot that has to be created by the framework user.
+     * Requires a SampleInput which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
      */
-    public Requirement<DiscordChatInput> discordChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, DiscordChatInput.class);
+    public Requirement<SampleInput> sample(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Sample", false, SampleInput.class);
     }
 
     /**
-     * Requires a connection with a device connected to a serial port (an Arduino for example)
+     * Requires a connection with a device connected to a serial port (an Arduino for example) which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user and to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<SerialInput> serial(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, SerialInput.class);
     }
 
     /**
-     * Requires a login for the TipeeeStream api that has to be created by the framework user.
+     * Requires a connection with a device connected to a serial port (an Arduino for example) which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user and to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<SerialInput> serial(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Serial", false, SerialInput.class);
+    }
+
+    /**
+     * Requires a discord chat bot which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<DiscordChatInput> discordChat(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, DiscordChatInput.class);
+    }
+
+    /**
+     * Requires a discord chat bot which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<DiscordChatInput> discordChat(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Discord Chat", false, DiscordChatInput.class);
+    }
+
+    /**
+     * Requires a MockUpChatInput which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<MockUpChatInput> mockUpChat(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, MockUpChatInput.class);
+    }
+
+    /**
+     * Requires a MockUpChatInput which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<MockUpChatInput> mockUpChat(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Mock Up Chat", false, MockUpChatInput.class);
+    }
+
+    /**
+     * Requires a TwitchChatInput which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<TwitchChatInput> twitchChat(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TwitchChatInput.class);
+    }
+
+    /**
+     * Requires a TwitchChatInput which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<TwitchChatInput> twitchChat(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Twitch Chat", false, TwitchChatInput.class);
+    }
+
+    /**
+     * Requires a login for the TipeeeStream api which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<TipeeestreamEventInput> tipeeeStream(String uniqueRequirementId, String displayName, boolean isOptional) {
         return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TipeeestreamEventInput.class);
     }
 
     /**
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName Is displayed to the framework user and to tell him what to enter
-     * @param isOptional true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * Requires a login for the TipeeeStream api which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
      */
-    public Requirement<FileInput> file(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, FileInput.class);
+    public Requirement<TipeeestreamEventInput> tipeeeStream(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Tipeeestream Event", false, TipeeestreamEventInput.class);
     }
 
-    // Add more inputs here
 
 }

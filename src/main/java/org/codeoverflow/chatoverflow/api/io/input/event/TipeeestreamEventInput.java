@@ -8,7 +8,7 @@ import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.Tipeeestre
 
 import java.util.function.Consumer;
 
-@IsRequirement(requires = "login for the TipeeeStream api")
+@IsRequirement(requires = "login for the TipeeeStream api", methodName = "tipeeeStream")
 public interface TipeeestreamEventInput extends EventInput<TipeeestreamEvent> {
 
     /**
