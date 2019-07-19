@@ -1,12 +1,11 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
 
+import org.codeoverflow.chatoverflow.api.IsRequirement;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.twitch.TwitchChatMessage;
-import org.codeoverflow.chatoverflow.api.io.event.chat.mockup.MockupPrivateChatMessageReceiveEvent;
 import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchChatMessageReceiveEvent;
 import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchEvent;
 import org.codeoverflow.chatoverflow.api.io.event.chat.twitch.TwitchPrivateChatMessageReceiveEvent;
-import org.codeoverflow.chatoverflow.api.io.input.chat.ChatInput;
 
 import java.util.function.Consumer;
 
@@ -16,6 +15,7 @@ import java.util.function.Consumer;
  * <b>Important notice:</b><br>
  * <b>Call {@link #setChannel(String)} to bind this input to a channel before performing any other action</b>}
  */
+@IsRequirement
 public interface TwitchChatInput extends ChatInput<TwitchChatMessage, TwitchEvent>, PrivateChatInput<TwitchChatMessage, TwitchEvent> {
 
     /**

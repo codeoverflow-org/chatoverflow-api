@@ -1,6 +1,6 @@
 name := "chatoverflow-api"
-// The source generator creates a java class with the current version info
-lazy val sourceGenerator = TaskKey[Unit]("sourceGenerator")
+lazy val apiVersionGenerator = TaskKey[Unit]("apiVersionGenerator")
+lazy val requirementsGenerator = TaskKey[Unit]("requirementsGenerator")
 
 // Convention: majorVersion++ on api signature update (else: minorVersion ++)
 val majorVersion = 3
@@ -14,23 +14,16 @@ version := s"$majorVersion.$minorVersion"
 // ---------------------------------------------------------------------------------------------------------------------
 
 
-sourceGenerator := {
-  val file = new File(sourceDirectory.value, "main/java/org/codeoverflow/chatoverflow/api/APIVersion.java")
-  IO.write(file,
-    """package org.codeoverflow.chatoverflow.api;
-      |
-      |/**
-      | * THIS CLASS IS GENERATED WHILE COMPILING. DO CHANGE THE VERSION NUMBERS IN THE APIS BUILD.SBT!
-      | */
-      |public class APIVersion {
-      |    public static final int MAJOR_VERSION = %d;
-      |    public static final int MINOR_VERSION = %d;
-      |}
-      |""".stripMargin.format(majorVersion, minorVersion))
-}
+apiVersionGenerator := APIUtility(streams.value.log)
+  .generateAPIVersionFile(sourceDirectory.value, majorVersion, minorVersion)
+
+requirementsGenerator := APIUtility(streams.value.log).generatedRequirements(sourceDirectory.value)
+
 
 // Update the compile process to generate the api version java class
 compile in Compile := {
-  sourceGenerator.value
+  apiVersionGenerator.value
+  (compile in Compile).value
+  requirementsGenerator.value
   (compile in Compile).value
 }

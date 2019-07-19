@@ -1,5 +1,6 @@
 package org.codeoverflow.chatoverflow.api.io.input.chat;
 
+import org.codeoverflow.chatoverflow.api.IsRequirement;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.discord.DiscordChatMessage;
 import org.codeoverflow.chatoverflow.api.io.event.chat.discord.*;
 
@@ -7,6 +8,7 @@ import java.util.Optional;
 import java.util.concurrent.Future;
 import java.util.function.Consumer;
 
+@IsRequirement(requires = "discord chat bot")
 public interface DiscordChatInput extends ChatInput<DiscordChatMessage, DiscordEvent>, PrivateChatInput<DiscordChatMessage, DiscordEvent> {
 
     /**

@@ -1,9 +1,13 @@
 package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
+// THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
+
 import org.codeoverflow.chatoverflow.api.io.parameter.StringParameter;
 
+// THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
+
 /**
- * Syntactic sugar for the plugin developer that provides all parameter requirements for him
+ * Select a Parameter Requirement to get access to the desired platform or values.
  */
 public class Parameter {
 
@@ -14,17 +18,26 @@ public class Parameter {
     }
 
     /**
-     * Requires a new string that has to be specified by the user.
+     * Requires a StringParameter which has to be specified by the user.
      *
-     * @param uniqueRequirementId any unique id by which your plugin can identify the requirement
-     * @param displayName         Is displayed to the framework user and to tell him what to enter
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
      * @param isOptional          true if this requirement is optional, false if mandatory
-     * @return the requirement object
+     * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<StringParameter> string(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireParameter(uniqueRequirementId, displayName, isOptional, StringParameter.class);
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, StringParameter.class);
     }
 
-    // Add more parameters here
+    /**
+     * Requires a StringParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<StringParameter> string(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "String", false, StringParameter.class);
+    }
+
 
 }

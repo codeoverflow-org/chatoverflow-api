@@ -1,7 +1,10 @@
 package org.codeoverflow.chatoverflow.api.io.output;
 
+import org.codeoverflow.chatoverflow.api.IsRequirement;
+
 import java.awt.image.BufferedImage;
 
+@IsRequirement(requires = "file system access")
 public interface FileOutput extends Output {
 
     boolean saveImage(BufferedImage image, String format, String pathInResources);

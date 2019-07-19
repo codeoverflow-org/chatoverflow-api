@@ -1,12 +1,14 @@
 package org.codeoverflow.chatoverflow.api.io.input.event;
 
-import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamFollowEvent;
+import org.codeoverflow.chatoverflow.api.IsRequirement;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamDonationEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamEvent;
+import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamFollowEvent;
 import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamSubscriptionEvent;
 
 import java.util.function.Consumer;
 
+@IsRequirement(requires = "login for the TipeeeStream api", methodName = "tipeeeStream")
 public interface TipeeestreamEventInput extends EventInput<TipeeestreamEvent> {
 
     /**

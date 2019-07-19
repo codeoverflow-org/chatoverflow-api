@@ -1,10 +1,12 @@
 package org.codeoverflow.chatoverflow.api.io.output.chat;
 
+import org.codeoverflow.chatoverflow.api.IsRequirement;
 import org.codeoverflow.chatoverflow.api.io.dto.chat.discord.DiscordEmbed;
 
 /**
  * Output to send messages in a discord chat
  */
+@IsRequirement(requires = "discord chat bot")
 public interface DiscordChatOutput extends ChatOutput {
 
     /**
