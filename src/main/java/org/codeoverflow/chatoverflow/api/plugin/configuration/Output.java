@@ -7,6 +7,7 @@ import org.codeoverflow.chatoverflow.api.io.output.RconOutput;
 import org.codeoverflow.chatoverflow.api.io.output.SerialOutput;
 import org.codeoverflow.chatoverflow.api.io.output.chat.DiscordChatOutput;
 import org.codeoverflow.chatoverflow.api.io.output.chat.TwitchChatOutput;
+import org.codeoverflow.chatoverflow.api.io.output.twitter.TwitterTweetOutput;
 
 // THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
 
@@ -129,6 +130,28 @@ public class Output {
      */
     public Requirement<TwitchChatOutput> twitchChat(String uniqueRequirementId) {
         return requirements.requireOutput(uniqueRequirementId, "Twitch Chat", false, TwitchChatOutput.class);
+    }
+
+    /**
+     * Requires a twitter chat bot which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<TwitterTweetOutput> twitterTweet(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, TwitterTweetOutput.class);
+    }
+
+    /**
+     * Requires a twitter chat bot which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<TwitterTweetOutput> twitterTweet(String uniqueRequirementId) {
+        return requirements.requireOutput(uniqueRequirementId, "Twitter Tweet", false, TwitterTweetOutput.class);
     }
 
 
