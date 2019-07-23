@@ -29,7 +29,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<FileOutput> file(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, FileOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, FileOutput.class);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<FileOutput> file(String uniqueRequirementId) {
-        return requirements.requireInput(uniqueRequirementId, "File", false, FileOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, "File", false, FileOutput.class);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<SerialOutput> serial(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, SerialOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, SerialOutput.class);
     }
 
     /**
@@ -61,7 +61,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<SerialOutput> serial(String uniqueRequirementId) {
-        return requirements.requireInput(uniqueRequirementId, "Serial", false, SerialOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, "Serial", false, SerialOutput.class);
     }
 
     /**
@@ -73,7 +73,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<DiscordChatOutput> discordChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, DiscordChatOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, DiscordChatOutput.class);
     }
 
     /**
@@ -83,7 +83,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<DiscordChatOutput> discordChat(String uniqueRequirementId) {
-        return requirements.requireInput(uniqueRequirementId, "Discord Chat", false, DiscordChatOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, "Discord Chat", false, DiscordChatOutput.class);
     }
 
     /**
@@ -95,7 +95,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<TwitchChatOutput> twitchChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, TwitchChatOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, TwitchChatOutput.class);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Output {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<TwitchChatOutput> twitchChat(String uniqueRequirementId) {
-        return requirements.requireInput(uniqueRequirementId, "Twitch Chat", false, TwitchChatOutput.class);
+        return requirements.requireOutput(uniqueRequirementId, "Twitch Chat", false, TwitchChatOutput.class);
     }
 
 
