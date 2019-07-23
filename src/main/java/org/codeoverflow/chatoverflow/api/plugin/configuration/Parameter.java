@@ -26,7 +26,7 @@ public class Parameter {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<StringParameter> string(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, StringParameter.class);
+        return requirements.requireParameter(uniqueRequirementId, displayName, isOptional, StringParameter.class);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Parameter {
      * @return the requirement object. Use the get() method only at runtime!
      */
     public Requirement<StringParameter> string(String uniqueRequirementId) {
-        return requirements.requireInput(uniqueRequirementId, "String", false, StringParameter.class);
+        return requirements.requireParameter(uniqueRequirementId, "String", false, StringParameter.class);
     }
 
 
