@@ -39,7 +39,7 @@ public class Requirement<T extends Serializable> {
      *
      * @param value the value of the requirement
      */
-    public void set(T value) {
+    void set(T value) {
         this.value = value;
     }
 
@@ -57,7 +57,7 @@ public class Requirement<T extends Serializable> {
      *
      * @param name a string to display to the user
      */
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
@@ -91,7 +91,7 @@ public class Requirement<T extends Serializable> {
      *
      * @param optional true, if the requirement does not need to be set
      */
-    public void setOptional(boolean optional) {
+    void setOptional(boolean optional) {
         isOptional = optional;
     }
 
@@ -100,7 +100,7 @@ public class Requirement<T extends Serializable> {
      *
      * @return A class object holding the value set while creating the requirement object
      */
-    public Class getTargetType() {
+    Class getTargetType() {
         return targetType;
     }
 

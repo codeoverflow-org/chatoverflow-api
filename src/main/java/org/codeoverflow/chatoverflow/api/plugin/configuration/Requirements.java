@@ -71,7 +71,7 @@ public class Requirements {
      * @param uniqueRequirementId the plugin unique requirement id
      * @return an optional encapsulating the requirement or none
      */
-    public Optional<? extends Requirement<? extends Serializable>> getRequirementById(String uniqueRequirementId) {
+    Optional<? extends Requirement<? extends Serializable>> getRequirementById(String uniqueRequirementId) {
         return getAllEntries()
                 .filter(entry -> entry.getKey().equals(uniqueRequirementId))
                 .map(Map.Entry::getValue).findFirst();
@@ -83,7 +83,7 @@ public class Requirements {
      * @param uniqueRequirementId the plugin unique requirement id
      * @return true, if the requirement exists and previously had a value
      */
-    public boolean unsetRequirementById(String uniqueRequirementId) {
+    boolean unsetRequirementById(String uniqueRequirementId) {
         Optional<? extends Requirement<? extends Serializable>> requirement =
                 getAllEntries().filter(entry -> entry.getKey().equals(uniqueRequirementId))
                         .map(Map.Entry::getValue).findFirst();
@@ -98,7 +98,7 @@ public class Requirements {
      *
      * @return true, if all needed requirements had been set
      */
-    public Boolean isComplete() {
+    Boolean isComplete() {
         return getAllEntries()
                 .map(Map.Entry::getValue)
                 .allMatch(req -> req.isSet() || req.isOptional());
@@ -109,7 +109,7 @@ public class Requirements {
      *
      * @return a list of unique requirement ids
      */
-    public List<Requirement<? extends Serializable>> getMissingRequirements() {
+    List<Requirement<? extends Serializable>> getMissingRequirements() {
         return getAllEntries()
                 .filter(entry -> !entry.getValue().isSet())
                 .map(Map.Entry::getValue)
@@ -122,19 +122,19 @@ public class Requirements {
                 parameterRequirements.entrySet().stream()).reduce(Stream::concat).get();
     }
 
-    public Map<String, Requirement<? extends Serializable>> getRequirementMap() {
+    Map<String, Requirement<? extends Serializable>> getRequirementMap() {
         return getAllEntries().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public Collection<Requirement<? extends Serializable>> getInputRequirements() {
+    Collection<Requirement<? extends Serializable>> getInputRequirements() {
         return inputRequirements.values();
     }
 
-    public Collection<Requirement<? extends Serializable>> getOutputRequirements() {
+    Collection<Requirement<? extends Serializable>> getOutputRequirements() {
         return outputRequirements.values();
     }
 
-    public Collection<Requirement<? extends Serializable>> getParameterRequirements() {
+    Collection<Requirement<? extends Serializable>> getParameterRequirements() {
         return parameterRequirements.values();
     }
 }
