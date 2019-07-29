@@ -100,7 +100,7 @@ public class Requirement<T extends Serializable> {
      *
      * @return A class object holding the value set while creating the requirement object
      */
-    Class getTargetType() {
+    public Class getTargetType() {
         return targetType;
     }
 
