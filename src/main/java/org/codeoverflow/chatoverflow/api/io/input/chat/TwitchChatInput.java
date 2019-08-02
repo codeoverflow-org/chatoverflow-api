@@ -40,4 +40,11 @@ public interface TwitchChatInput extends ChatInput<TwitchChatMessage, TwitchEven
     default void registerPrivateChatMessageReceiveEventHandler(Consumer<TwitchPrivateChatMessageReceiveEvent> eventHandler) {
         registerEventHandler(eventHandler, TwitchPrivateChatMessageReceiveEvent.class);
     }
+
+    /**
+     * Returns the username of provided twitch account
+     *
+     * @return the twitch username of the bot
+     */
+    String getUsername();
 }

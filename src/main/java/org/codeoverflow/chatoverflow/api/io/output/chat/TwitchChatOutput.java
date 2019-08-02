@@ -17,4 +17,11 @@ public interface TwitchChatOutput extends ChatOutput {
      * @param channel name of the channel
      */
     void setChannel(String channel);
+
+    /**
+     * Returns the username of provided twitch account
+     *
+     * @return the twitch username of the bot
+     */
+    String getUsername();
 }
