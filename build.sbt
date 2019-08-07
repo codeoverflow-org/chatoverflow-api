@@ -13,6 +13,8 @@ version := s"$majorVersion.$minorVersion"
 // ---------------------------------------------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------------------------------------------
 
+import org.codeoverflow.chatoverflow.build.api.APIUtility
+
 apiVersionGenerator := new APIUtility(streams.value.log)
   .generateAPIVersionFile(sourceDirectory.value, majorVersion, minorVersion)
 
