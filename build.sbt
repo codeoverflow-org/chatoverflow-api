@@ -27,3 +27,5 @@ compile in Compile := {
   requirementsGenerator.value
   (compile in Compile).value
 }
+
+packageBin / includePom := false
