@@ -6,7 +6,6 @@ import org.codeoverflow.chatoverflow.api.io.input.FileInput;
 import org.codeoverflow.chatoverflow.api.io.input.SampleInput;
 import org.codeoverflow.chatoverflow.api.io.input.SerialInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.DiscordChatInput;
-import org.codeoverflow.chatoverflow.api.io.input.chat.MockUpChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.TwitchChatInput;
 import org.codeoverflow.chatoverflow.api.io.input.event.TipeeestreamEventInput;
 
@@ -109,28 +108,6 @@ public class Input {
      */
     public Requirement<DiscordChatInput> discordChat(String uniqueRequirementId) {
         return requirements.requireInput(uniqueRequirementId, "Discord Chat", false, DiscordChatInput.class);
-    }
-
-    /**
-     * Requires a MockUpChatInput which has to be specified by the user.
-     *
-     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
-     * @param displayName         a string to display to the user while setting your requirement
-     * @param isOptional          true if this requirement is optional, false if mandatory
-     * @return the requirement object. Use the get() method only at runtime!
-     */
-    public Requirement<MockUpChatInput> mockUpChat(String uniqueRequirementId, String displayName, boolean isOptional) {
-        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, MockUpChatInput.class);
-    }
-
-    /**
-     * Requires a MockUpChatInput which has to be specified by the user.
-     *
-     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
-     * @return the requirement object. Use the get() method only at runtime!
-     */
-    public Requirement<MockUpChatInput> mockUpChat(String uniqueRequirementId) {
-        return requirements.requireInput(uniqueRequirementId, "Mock Up Chat", false, MockUpChatInput.class);
     }
 
     /**
