@@ -7,6 +7,8 @@ val majorVersion = 3
 val minorVersion = 0
 version := s"$majorVersion.$minorVersion"
 
+import org.codeoverflow.chatoverflow.build.BuildUtils
+javacOptions ++= BuildUtils.getJava8CrossOptions
 
 
 // ---------------------------------------------------------------------------------------------------------------------
