@@ -7,6 +7,11 @@ val majorVersion = 3
 val minorVersion = 0
 version := s"$majorVersion.$minorVersion"
 
+// The API doesn't use scala. We can safely drop the scala version suffix from the jar and
+// drop the dependency on the scala library.
+autoScalaLibrary := false
+crossPaths := false
+
 import org.codeoverflow.chatoverflow.build.BuildUtils
 javacOptions ++= BuildUtils.getJava8CrossOptions
 
