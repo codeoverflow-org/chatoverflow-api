@@ -1,10 +1,7 @@
 package org.codeoverflow.chatoverflow.api.io.input.event;
 
 import org.codeoverflow.chatoverflow.api.IsRequirement;
-import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamDonationEvent;
-import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamEvent;
-import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamFollowEvent;
-import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.TipeeestreamSubscriptionEvent;
+import org.codeoverflow.chatoverflow.api.io.event.stream.tipeeestream.*;
 
 import java.util.function.Consumer;
 
@@ -36,5 +33,14 @@ public interface TipeeestreamEventInput extends EventInput<TipeeestreamEvent> {
      */
     default void registerDonationEventHandler(Consumer<TipeeestreamDonationEvent> eventHandler) {
         registerEventHandler(eventHandler, TipeeestreamDonationEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link TipeeestreamCheerEvent}
+     *
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerCheerEventHandler(Consumer<TipeeestreamCheerEvent> eventHandler) {
+        registerEventHandler(eventHandler, TipeeestreamCheerEvent.class);
     }
 }
