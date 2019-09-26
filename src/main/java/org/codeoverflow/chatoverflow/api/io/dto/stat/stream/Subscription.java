@@ -34,9 +34,9 @@ public class Subscription<T extends User> {
     }
 
     /**
-     * Get the time when the user started following
+     * Get the time when the user has subscribed
      *
-     * @return follow start time
+     * @return subscription time
      */
     public OffsetDateTime getTime() {
         return time;
