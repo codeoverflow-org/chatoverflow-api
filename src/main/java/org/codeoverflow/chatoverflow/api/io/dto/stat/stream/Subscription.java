@@ -51,16 +51,16 @@ public class Subscription<T extends User> {
     /**
      * Returns the tier of the subscription {@link SubscriptionTier}.
      *
-     * @return the sub tier
+     * @return the subscription tier
      */
     public SubscriptionTier getTier() {
         return tier;
     }
 
     /**
-     * Returns if the sub was gifted by someone else or not
+     * Returns if the subscription was gifted by someone else or not
      *
-     * @return it the sub was gifted
+     * @return it the subscription was gifted
      */
     public boolean isGifted() {
         return gifted;
@@ -69,7 +69,7 @@ public class Subscription<T extends User> {
     /**
      * Returns the donor of the subscription if it was gifted.
      *
-     * @return the donor of the sub
+     * @return the donor of the subscription
      */
     public T getDonor() {
         return donor;

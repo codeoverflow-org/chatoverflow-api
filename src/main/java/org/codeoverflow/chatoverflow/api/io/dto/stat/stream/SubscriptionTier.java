@@ -32,8 +32,8 @@ public enum SubscriptionTier {
     /**
      * Parse the tier from a string
      *
-     * @param tier the tier of the sub. 0 is prime, 1 is tier 1 and so on.
-     * @return the sub-tier represented by the passed number or {@link #UNKNOWN}.
+     * @param tier the tier of the subscription. 0 is prime, 1 is tier 1 and so on.
+     * @return the subscription-tier represented by the passed number or {@link #UNKNOWN}.
      */
     public static SubscriptionTier parse(int tier) {
         return Arrays.stream(values())
