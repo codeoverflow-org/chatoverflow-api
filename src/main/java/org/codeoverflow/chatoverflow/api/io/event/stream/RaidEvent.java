@@ -5,7 +5,7 @@ import org.codeoverflow.chatoverflow.api.io.dto.stat.stream.Raid;
 /**
  * Generic event for raids
  */
-public class RaidEvent<T extends Raid> {
+public abstract class RaidEvent<T extends Raid> {
 
     private final T info;
 

@@ -5,15 +5,15 @@ import org.codeoverflow.chatoverflow.api.io.dto.User;
 import java.time.OffsetDateTime;
 
 /**
- * Another streamer has started a raid against your stream.
+ * Another streamer has started hosting your stream on their channel.
  */
-public class Raid<T extends User> {
+public class Host<T extends User> {
     private final T streamer;
     private final String message;
     private final int viewerCount;
     private final OffsetDateTime time;
 
-    public Raid(T streamer, String message, int viewerCount, OffsetDateTime time) {
+    public Host(T streamer, String message, int viewerCount, OffsetDateTime time) {
         this.streamer = streamer;
         this.message = message;
         this.viewerCount = viewerCount;
@@ -21,36 +21,36 @@ public class Raid<T extends User> {
     }
 
     /**
-     * Get the streamer which started the raid.
+     * Get the streamer which started hosting you.
      *
-     * @return initiating streamer
+     * @return streamer that hosts you
      */
     public T getStreamer() {
         return streamer;
     }
 
     /**
-     * Get the message from the initiating streamer.
+     * Get the message from the streamer that has started hosting you.
      *
-     * @return the raid message
+     * @return the host message
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     * Get the viewer count with which the streamer raids you.
+     * Get the viewer count with which the streamer is hosting you.
      *
-     * @return the viewer count of the raid
+     * @return the viewer count of the host
      */
     public int getViewerCount() {
         return viewerCount;
     }
 
     /**
-     * Get the time when the raid has started
+     * Get the time when the streamer has started hosting you.
      *
-     * @return raid time
+     * @return host time
      */
     public OffsetDateTime getTime() {
         return time;

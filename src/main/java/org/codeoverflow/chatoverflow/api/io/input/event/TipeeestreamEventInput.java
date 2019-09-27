@@ -52,4 +52,13 @@ public interface TipeeestreamEventInput extends EventInput<TipeeestreamEvent> {
     default void registerRaidEventHandler(Consumer<TipeeestreamRaidEvent> eventHandler) {
         registerEventHandler(eventHandler, TipeeestreamRaidEvent.class);
     }
+
+    /**
+     * Register an event handler that listens to all {@link TipeeestreamHostEvent}
+     *
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerHostEventHandler(Consumer<TipeeestreamHostEvent> eventHandler) {
+        registerEventHandler(eventHandler, TipeeestreamHostEvent.class);
+    }
 }
