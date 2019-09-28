@@ -1,10 +1,7 @@
 package org.codeoverflow.chatoverflow.api.io.input.event;
 
 import org.codeoverflow.chatoverflow.api.IsRequirement;
-import org.codeoverflow.chatoverflow.api.io.event.stream.streamelements.StreamElementsDonationEvent;
-import org.codeoverflow.chatoverflow.api.io.event.stream.streamelements.StreamElementsEvent;
-import org.codeoverflow.chatoverflow.api.io.event.stream.streamelements.StreamElementsFollowEvent;
-import org.codeoverflow.chatoverflow.api.io.event.stream.streamelements.StreamElementsSubscriptionEvent;
+import org.codeoverflow.chatoverflow.api.io.event.stream.streamelements.*;
 
 import java.util.function.Consumer;
 
@@ -39,5 +36,32 @@ public interface StreamElementsEventInput extends EventInput<StreamElementsEvent
      */
     default void registerDonationEventHandler(Consumer<StreamElementsDonationEvent> eventHandler) {
         registerEventHandler(eventHandler, StreamElementsDonationEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link StreamElementsCheerEvent}
+     *
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerCheerEventHandler(Consumer<StreamElementsCheerEvent> eventHandler) {
+        registerEventHandler(eventHandler, StreamElementsCheerEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link StreamElementsRaidEvent}
+     *
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerRaidEventHandler(Consumer<StreamElementsRaidEvent> eventHandler) {
+        registerEventHandler(eventHandler, StreamElementsRaidEvent.class);
+    }
+
+    /**
+     * Register an event handler that listens to all {@link StreamElementsHostEvent}
+     *
+     * @param eventHandler consumer that receives the Events
+     */
+    default void registerHostEventHandler(Consumer<StreamElementsHostEvent> eventHandler) {
+        registerEventHandler(eventHandler, StreamElementsHostEvent.class);
     }
 }
