@@ -2,6 +2,7 @@ package org.codeoverflow.chatoverflow.api.io.dto.stat.stream.streamelements;
 
 import org.codeoverflow.chatoverflow.api.io.dto.User;
 import org.codeoverflow.chatoverflow.api.io.dto.stat.stream.Subscription;
+import org.codeoverflow.chatoverflow.api.io.dto.stat.stream.SubscriptionTier;
 
 import java.time.OffsetDateTime;
 
@@ -11,19 +12,13 @@ import java.time.OffsetDateTime;
 public class StreamElementsSubscription extends Subscription<User> {
 
     private final StreamElementsProvider provider;
-    private final boolean gifted;
 
-    public StreamElementsSubscription(User subscriber, int resub, OffsetDateTime time, StreamElementsProvider provider, boolean gifted) {
-        super(subscriber, resub, time);
+    public StreamElementsSubscription(User subscriber, OffsetDateTime time, int resub, SubscriptionTier tier, boolean gifted, User donor, StreamElementsProvider provider) {
+        super(subscriber, time, resub, tier, gifted, donor);
         this.provider = provider;
-        this.gifted = gifted;
     }
 
     public StreamElementsProvider getProvider() {
         return provider;
-    }
-
-    public boolean isGifted() {
-        return gifted;
     }
 }
