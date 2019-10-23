@@ -1,3 +1,4 @@
+organization := "org.codeoverflow"
 name := "chatoverflow-api"
 lazy val apiVersionGenerator = TaskKey[Unit]("apiVersionGenerator")
 lazy val requirementsGenerator = TaskKey[Unit]("requirementsGenerator")
