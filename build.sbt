@@ -6,7 +6,9 @@ lazy val requirementsGenerator = TaskKey[Unit]("requirementsGenerator")
 // Convention: majorVersion++ on api signature update (else: minorVersion ++)
 val majorVersion = 3
 val minorVersion = 0
-version := s"$majorVersion.$minorVersion"
+val patchVersion = 0
+// The patch version is ignored and only used for the package version
+version := s"$majorVersion.$minorVersion.$patchVersion"
 
 // The API doesn't use scala. We can safely drop the scala version suffix from the jar and
 // drop the dependency on the scala library.
