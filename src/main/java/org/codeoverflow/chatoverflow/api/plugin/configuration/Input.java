@@ -3,6 +3,7 @@ package org.codeoverflow.chatoverflow.api.plugin.configuration;
 // THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
 
 import org.codeoverflow.chatoverflow.api.io.input.FileInput;
+import org.codeoverflow.chatoverflow.api.io.input.RconInput;
 import org.codeoverflow.chatoverflow.api.io.input.SampleInput;
 import org.codeoverflow.chatoverflow.api.io.input.SerialInput;
 import org.codeoverflow.chatoverflow.api.io.input.chat.DiscordChatInput;
@@ -42,6 +43,28 @@ public class Input {
      */
     public Requirement<FileInput> file(String uniqueRequirementId) {
         return requirements.requireInput(uniqueRequirementId, "File", false, FileInput.class);
+    }
+
+    /**
+     * Requires a remote control for game servers using RCON protocol which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<RconInput> rcon(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireInput(uniqueRequirementId, displayName, isOptional, RconInput.class);
+    }
+
+    /**
+     * Requires a remote control for game servers using RCON protocol which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<RconInput> rcon(String uniqueRequirementId) {
+        return requirements.requireInput(uniqueRequirementId, "Rcon", false, RconInput.class);
     }
 
     /**
