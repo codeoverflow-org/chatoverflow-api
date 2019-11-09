@@ -4,11 +4,14 @@ package org.codeoverflow.chatoverflow.api.plugin.configuration;
 
 import org.codeoverflow.chatoverflow.api.io.parameter.BooleanParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.ColorParameter;
+import org.codeoverflow.chatoverflow.api.io.parameter.DateParameter;
+import org.codeoverflow.chatoverflow.api.io.parameter.DateTimeParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.DoubleParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.IntegerParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.ListParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.MapParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.StringParameter;
+import org.codeoverflow.chatoverflow.api.io.parameter.TimeParameter;
 import org.codeoverflow.chatoverflow.api.io.parameter.UriParameter;
 
 // THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
@@ -66,6 +69,50 @@ public class Parameter {
      */
     public Requirement<ColorParameter> colorParameter(String uniqueRequirementId) {
         return requirements.requireParameter(uniqueRequirementId, "Color Parameter", false, ColorParameter.class);
+    }
+
+    /**
+     * Requires a DateParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<DateParameter> dateParameter(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireParameter(uniqueRequirementId, displayName, isOptional, DateParameter.class);
+    }
+
+    /**
+     * Requires a DateParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<DateParameter> dateParameter(String uniqueRequirementId) {
+        return requirements.requireParameter(uniqueRequirementId, "Date Parameter", false, DateParameter.class);
+    }
+
+    /**
+     * Requires a DateTimeParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<DateTimeParameter> dateTimeParameter(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireParameter(uniqueRequirementId, displayName, isOptional, DateTimeParameter.class);
+    }
+
+    /**
+     * Requires a DateTimeParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<DateTimeParameter> dateTimeParameter(String uniqueRequirementId) {
+        return requirements.requireParameter(uniqueRequirementId, "Date Time Parameter", false, DateTimeParameter.class);
     }
 
     /**
@@ -176,6 +223,28 @@ public class Parameter {
      */
     public Requirement<StringParameter> stringParameter(String uniqueRequirementId) {
         return requirements.requireParameter(uniqueRequirementId, "String Parameter", false, StringParameter.class);
+    }
+
+    /**
+     * Requires a TimeParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<TimeParameter> timeParameter(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireParameter(uniqueRequirementId, displayName, isOptional, TimeParameter.class);
+    }
+
+    /**
+     * Requires a TimeParameter which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<TimeParameter> timeParameter(String uniqueRequirementId) {
+        return requirements.requireParameter(uniqueRequirementId, "Time Parameter", false, TimeParameter.class);
     }
 
     /**
