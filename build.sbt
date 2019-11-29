@@ -6,7 +6,7 @@ lazy val requirementsGenerator = TaskKey[Unit]("requirementsGenerator")
 // Convention: majorVersion++ on api signature update (else: minorVersion ++)
 val majorVersion = 3
 val minorVersion = 0
-val patchVersion = 0
+val patchVersion = 1
 // The patch version is ignored and only used for the package version
 version := s"$majorVersion.$minorVersion.$patchVersion"
 
