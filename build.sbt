@@ -15,8 +15,6 @@ version := s"$majorVersion.$minorVersion.$patchVersion"
 autoScalaLibrary := false
 crossPaths := false
 
-import org.codeoverflow.chatoverflow.build.BuildUtils
-javacOptions ++= BuildUtils.getJava8CrossOptions
 
 
 // ---------------------------------------------------------------------------------------------------------------------
