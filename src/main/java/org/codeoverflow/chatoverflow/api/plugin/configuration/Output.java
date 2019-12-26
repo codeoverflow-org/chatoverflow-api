@@ -3,6 +3,7 @@ package org.codeoverflow.chatoverflow.api.plugin.configuration;
 // THIS FILE IS GENERATED WHILE COMPILING. DO NOT CHANGE ANYTHING HERE!
 
 import org.codeoverflow.chatoverflow.api.io.output.FileOutput;
+import org.codeoverflow.chatoverflow.api.io.output.HostingOutput;
 import org.codeoverflow.chatoverflow.api.io.output.RconOutput;
 import org.codeoverflow.chatoverflow.api.io.output.SerialOutput;
 import org.codeoverflow.chatoverflow.api.io.output.chat.DiscordChatOutput;
@@ -41,6 +42,28 @@ public class Output {
      */
     public Requirement<FileOutput> file(String uniqueRequirementId) {
         return requirements.requireOutput(uniqueRequirementId, "File", false, FileOutput.class);
+    }
+
+    /**
+     * Requires a directory to host custom content using the framework web server which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @param displayName         a string to display to the user while setting your requirement
+     * @param isOptional          true if this requirement is optional, false if mandatory
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<HostingOutput> hosting(String uniqueRequirementId, String displayName, boolean isOptional) {
+        return requirements.requireOutput(uniqueRequirementId, displayName, isOptional, HostingOutput.class);
+    }
+
+    /**
+     * Requires a directory to host custom content using the framework web server which has to be specified by the user.
+     *
+     * @param uniqueRequirementId a plugin unique identifier which is stored for your plugin
+     * @return the requirement object. Use the get() method only at runtime!
+     */
+    public Requirement<HostingOutput> hosting(String uniqueRequirementId) {
+        return requirements.requireOutput(uniqueRequirementId, "Hosting", false, HostingOutput.class);
     }
 
     /**
