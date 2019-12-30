@@ -159,9 +159,9 @@ public class Requirements {
          * @param uniqueRequirementId the unique id of a requirement which must be created first
          * @param content             the serialized content to set
          */
+        @SuppressWarnings("unchecked")
         public void setRequirementContent(String uniqueRequirementId, Serializable content) {
             // This is a crazy cast but should never go wrong. If this fails, please call 911 (don't)
-            //noinspection unchecked
             getRequirementById(uniqueRequirementId)
                     .ifPresent(req -> ((Requirement<Serializable>) req).set(content));
         }
