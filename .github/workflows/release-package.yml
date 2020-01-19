@@ -39,7 +39,7 @@ jobs:
         env:
           CRED_FILE: |
             credentials += Credentials(
-              "GitHub Package Registry",
+              "CodeOverflow GitHub Package Registry",
               "maven.pkg.github.com",
               "${{ env.GITHUB_OWNER }}",
               "${{ secrets.GITHUB_TOKEN }}"
