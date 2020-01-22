@@ -1,13 +1,13 @@
-# When a tag is created this Action automatically publishes the API to the Github Package Registry
+# When a tag gets created this Action automatically publishes the API to the GitHub Package Registry
 
 name: Publish API Package
 
 on:
   push:
-    # Please don't run this on any branches
+    # Please don't run this on any branches ...
     branches-ignore:
     - "**"
-    # but run it on any tag
+    # ..., but run it on any tag
     tags:
     - "**"
 
@@ -20,11 +20,10 @@ jobs:
       - run: echo "::set-env name=GITHUB_OWNER::$(echo "${GITHUB_REPOSITORY}" | cut -d / -f1)"
 
       # Checkout main repository
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           repository: ${{ env.GITHUB_OWNER }}/chatoverflow
           ref: ${{ github.ref }}
-          path: chatoverflow-api # Download into the api workspace, so we don't need to change directories
 
       - name: Clone the API
         run: bash .scripts/checkout-repos.sh
@@ -35,15 +34,9 @@ jobs:
           java-version: openjdk@1.8
 
       - name: Login to GPR
-        run: mkdir -p ~/.sbt/1.0 && echo "${CRED_FILE}" > ~/.sbt/1.0/gpr.sbt
+        run: bash .scripts/authenticate-sbt.sh
         env:
-          CRED_FILE: |
-            credentials += Credentials(
-              "CodeOverflow GitHub Package Registry",
-              "maven.pkg.github.com",
-              "${{ env.GITHUB_OWNER }}",
-              "${{ secrets.GITHUB_TOKEN }}"
-            )
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Package
-        run: sbt fetch reload "set apiProject/publishTo := Some(\"GitHub ${GITHUB_OWNER} Apache Maven Packages\" at \"https://maven.pkg.github.com/${GITHUB_REPOSITORY}\")" apiProject/publish
+        run: sbt apiProject/publish
