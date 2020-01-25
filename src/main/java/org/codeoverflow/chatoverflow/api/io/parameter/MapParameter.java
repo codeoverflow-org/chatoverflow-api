@@ -5,7 +5,7 @@ import org.codeoverflow.chatoverflow.api.IsRequirement;
 import java.util.Map;
 
 /**
- * A {@link Parameter} that is a Map<String, String>
+ * A {@link Parameter} that is a Map&lt;String, String&gt;
  */
 @IsRequirement
 public interface MapParameter extends Parameter<Map<String, String>> {

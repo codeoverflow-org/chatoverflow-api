@@ -15,7 +15,7 @@ public @interface IsRequirement {
 
     /**
      * You can define the generated method name by yourself. If left empty, the name is generated like this:
-     * "StringParameter" -> "string" or "TwitchChatInput" -> "twitchChat"
+     * "StringParameter" -&gt; "string" or "TwitchChatInput" -&gt; "twitchChat"
      */
     String methodName() default "";
 
