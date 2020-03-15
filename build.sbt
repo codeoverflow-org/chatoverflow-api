@@ -7,8 +7,10 @@ lazy val requirementsGenerator = TaskKey[Unit]("requirementsGenerator")
 val majorVersion = 4
 val minorVersion = 0
 val patchVersion = 0
+
+import org.codeoverflow.chatoverflow.build.BuildUtils
 // The patch version is ignored and only used for the package version
-version := s"$majorVersion.$minorVersion.$patchVersion"
+version := BuildUtils.dynamicSnapshotVersion(s"$majorVersion.$minorVersion.$patchVersion")
 
 // The API doesn't use scala. We can safely drop the scala version suffix from the jar and
 // drop the dependency on the scala library.
